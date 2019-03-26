@@ -1,4 +1,4 @@
-  export ZSH=/c/Users/me/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="egoista"
 
@@ -8,13 +8,21 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR="vim"
+export EDITOR="nvim"
 
-alias pac="pacman"
+alias update="sudo ~/.scripts/update.sh"
+alias pac="pacaur"
 alias zshrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
-alias yarn="winpty -- yarn.cmd"
-alias electron="winpty -- electron.cmd"
-alias node="winpty -- node.exe"
-alias ng="winpty -- ng.cmd"
-alias yo="winpty -- yo.cmd"
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/me/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
