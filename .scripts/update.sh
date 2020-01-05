@@ -12,7 +12,6 @@ UMOUNT=/usr/bin/umount
 SED=/usr/bin/sed
 PACMAN=/usr/bin/pacman
 CP=/usr/bin/cp
-REFLECTOR=/usr/bin/reflector
 
 # --------------------------
 #      Snapshot System
@@ -36,5 +35,4 @@ $SUDO $CP /boot/initramfs-linux.img /boot/initramfs-linux-stable.img
 #        Update System
 # --------------------------
 
-$REFLECTOR --verbose -l 5 -p https --sort rate --save /etc/pacman.d/mirrorlist
 $PACMAN -Syu
