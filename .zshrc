@@ -12,6 +12,7 @@ export EDITOR="nvim"
 
 alias update="sudo ~/.scripts/update.sh"
 alias pac="pacaur"
+alias dl=". ~/.scripts/dl.sh"
 alias zshrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
 # Lines configured by zsh-newuser-install
@@ -26,3 +27,5 @@ zstyle :compinstall filename '/home/me/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
