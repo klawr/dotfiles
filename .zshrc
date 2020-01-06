@@ -14,6 +14,7 @@ alias update="sudo ~/.scripts/update.sh"
 alias pac="pacaur"
 alias dev=". ~/.scripts/dev.sh"
 alias zshrc="$EDITOR ~/.zshrc && . ~/.zshrc"
+alias env=". ./env/bin/activate"
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
