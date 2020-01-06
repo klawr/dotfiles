@@ -1,6 +1,6 @@
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="egoista"
+ZSH_THEME="egoista-sweet"
 
 plugins=(
   git
@@ -12,7 +12,7 @@ export EDITOR="nvim"
 
 alias update="sudo ~/.scripts/update.sh"
 alias pac="pacaur"
-alias dl=". ~/.scripts/dl.sh"
+alias dev=". ~/.scripts/dev.sh"
 alias zshrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
 # Lines configured by zsh-newuser-install
