@@ -15,6 +15,7 @@ alias pac="pacaur"
 alias dev=". ~/.scripts/dev.sh"
 alias zshrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 alias env=". ./env/bin/activate"
+alias py=". ~/.scripts/py.sh"
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
