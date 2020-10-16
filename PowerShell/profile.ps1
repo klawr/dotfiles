@@ -1,0 +1,84 @@
+
+#region conda initialize
+# !! Contents within this block are managed by 'conda init' !!
+Set-Variable CONDAPATH "C:\ProgramData\Miniconda3\Scripts\conda.exe"
+if (Test-Path $CONDAPATH) {
+    (& $CONDAPATH "shell.powershell" "hook") | Out-String | Invoke-Expression
+    #endregion
+    
+    # Kai here. Prohibit starting conda right away... always...
+    conda deactivate
+} else {
+    Write-Host "Conda not installed at $CONDAPATH" -ForegroundColor Yellow
+}
+
+Set-Variable FIREFOXPATH "C:\Program Files\Mozilla Firefox\firefox.exe"
+if (Test-Path $FIREFOXPATH) {
+    Set-Alias firefox $FIREFOXPATH
+} else {
+    Write-Host "Firefox not installed at $FIREFOXPATH" -ForegroundColor Yellow
+}
+
+Function DEV {
+    $path = "$HOME\devel"
+
+    foreach ($arg in $args) {
+        $result = @(Get-ChildItem($path) -Directory).BaseName -match $arg
+        if ($result.length -eq 0 -or $result -eq $False) {
+            Write-Host No match found -ForegroundColor Red
+            Write-Host (Get-ChildItem($path) -Directory).BaseName -Separator `n -ForegroundColor Yellow
+        }
+        elseif ($result.Length -gt 1) {
+            Write-Host Ambiguity -ForegroundColor Red
+            Write-Host $result -ForegroundColor Yellow -Separator `n
+            foreach ($res in $result) {
+                if ($arg -eq $res) {
+                    Write-Host "Navigating to $res" -ForegroundColor Green
+                    $path = "$path\$res"
+                }
+            }
+        }
+        else {
+            $path = "$path\$result"
+        }
+    }
+
+    Set-Location "$path"
+
+    if (Test-Path "$path\.git") {
+        LOAD_GIT_MODULE
+    }
+}
+
+Set-Variable PROFILEPATH $HOME\OneDrive\Documents\PowerShell
+Function PROFILE {
+    code -n $PROFILEPATH -g $PROFILEPATH\profile.ps1
+}
+Function LOAD_GIT_MODULE {
+    Write-Progress "Loading posh-git"
+    Import-Module "$PROFILEPATH\Modules\posh-git\1.0.0\posh-git.psd1"
+}
+New-Alias -Name lgit -Value LOAD_GIT_MODULE
+
+
+# This command is used for the deepmech project, where certain webpack stuff is not working...
+Set-Variable -Name DEVPATH -Value $HOME\devel\deepmech\gh-pages 
+Function LAZY {
+    Move-Item -Force $DEVPATH\dist\dist\deepmech_bundle.js $DEVPATH\dist\deepmech_bundle.js
+    Remove-Item $DEVPATH\dist\dist
+}
+# Figured I repeat this too often in said project:
+Function BUILD {
+    if ((Get-Location).path -eq $DEVPATH) {
+        yarn run build
+        LAZY
+        git add -A
+        git commit -m "Build bundle"
+        git push
+        Write-Host "Finished 😊" -ForegroundColor Green
+    } else {
+        Write-Host "You are not in " $DEVPATH -ForegroundColor Red
+        Write-Host "Type DEV to get there..." -ForegroundColor Red
+    }
+
+}
