@@ -19,6 +19,7 @@ if (Test-Path $FIREFOXPATH) {
     Write-Host "Firefox not installed at $FIREFOXPATH" -ForegroundColor Yellow
 }
 
+New-Alias -Name devel -Value DEV
 Function DEV {
     $path = "$HOME\devel"
 
