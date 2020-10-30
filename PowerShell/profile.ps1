@@ -1,25 +1,15 @@
 
-#region conda initialize
-# !! Contents within this block are managed by 'conda init' !!
-Set-Variable CONDAPATH "C:\ProgramData\Miniconda3\Scripts\conda.exe"
-if (Test-Path $CONDAPATH) {
-    (& $CONDAPATH "shell.powershell" "hook") | Out-String | Invoke-Expression
-    #endregion
-    
-    # Kai here. Prohibit starting conda right away... always...
-    conda deactivate
-} else {
-    Write-Host "Conda not installed at $CONDAPATH" -ForegroundColor Yellow
+$paths = "C:\ProgramData\Miniconda3\Scripts\conda.exe", "C:\Program Files\Mozilla Firefox\firefox.exe", "C:\Users\me\OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe";
+
+foreach ($path in $paths) {
+    $leaf = [System.IO.Path]::GetFileNameWithoutExtension($path)
+    if (Test-Path $path) {
+        Set-Alias $leaf $path;
+    } else {
+        Write-Host "$leaf not installed at $path" -ForegroundColor Yellow
+    }
 }
 
-Set-Variable FIREFOXPATH "C:\Program Files\Mozilla Firefox\firefox.exe"
-if (Test-Path $FIREFOXPATH) {
-    Set-Alias firefox $FIREFOXPATH
-} else {
-    Write-Host "Firefox not installed at $FIREFOXPATH" -ForegroundColor Yellow
-}
-
-New-Alias -Name devel -Value DEV
 Function DEV {
     $path = "$HOME\devel"
 
