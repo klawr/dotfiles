@@ -20,6 +20,7 @@ call plug#begin("~/.vim/plugged")
     \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',
     \ 'coc-powershell', 'coc-vimtex'
     \ ]
+    Plug 'pprovost/vim-ps1'
     " git
     Plug 'git@github.com:tpope/vim-fugitive.git'
     Plug 'git@github.com:airblade/vim-gitgutter.git'
@@ -28,6 +29,7 @@ call plug#begin("~/.vim/plugged")
 
     " Syntax checking
     Plug 'git@github.com:dense-analysis/ale.git'
+
     " LaTeX
     Plug 'lervag/vimtex'
 call plug#end()
@@ -55,9 +57,9 @@ function! ToggleNERD()
 endfunction
 nnoremap <silent> <C-b> :call ToggleNERD()<CR>
 
-" autocmd VimEnter * call ToggleNERD()
-" Automatically close nvim if NERDTree is only thing left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd VimEnter * call ToggleNERD()
+" Automatically opepen empty buffer if NERDTree is only thing left open
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " For colorscheme
 if (has("termguicolors"))
@@ -74,6 +76,7 @@ set background=dark
 nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
 nnoremap <C-p> :FZF<CR>
 let g:fzf_action = {
+  \ 'enter': 'tab split',
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit'
@@ -85,6 +88,8 @@ set splitright
 set splitbelow
 " Turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
+" Close window
+nnoremap qq :q<CR>
 " Start terminal in insert mode
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " Open terminal on ctrl+ö
@@ -99,8 +104,9 @@ nnoremap <C-n> :call OpenTerminal()<CR>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 
-" default vim: hjkl - left, down, up, right
-" Change hotkeys for the Pok3r
+" Easier access on latin-de1 - # is for 'alternate file name'. ¯\_(ツ)_/¯
+nnoremap # :
+nnoremap ! :!
 
 fu! Remap(type, lhs, rhs)
     exe a:type.'noremap' a:lhs a:rhs
@@ -115,11 +121,11 @@ while index >= 0
     let t = poker[index]
     let s = poker[index - 1]
     " Move from terminal to the window in the respective direction
-    call Remap('t', '<C-'.t.'>', '<C-\><C-n><C-w>'.s.'<CR>')
+    call Remap('t', '<C-'.t.'>', '<C-\><C-n><C-w>'.s)
     " Same for moving from normal mode
-    call Remap('n', '<C-'.t.'>', '<C-w>'.s.'<CR>')
+    call Remap('n', '<C-'.t.'>', '<C-w>'.s)
     " TODO check what this was
-    call Remap('n', '<S-'.t.'>', '<S-'.s.'><CR>')
+    call Remap('n', '<S-'.t.'>', '<S-'.s.'>')
     " Remap the movement keys
     call Remap('n', t, s)
     let index -= 1  
@@ -132,9 +138,11 @@ nnoremap <C-l> <C-w>l
 " Iterate from 0 to 10 for keybinds
 let count = 1
 while count <= 10
+    " 10 must evaluate to 0
     let n = count % 10
     " Go to tab number n using <A-n>
     call Remap('n', '<A-'.n.'>', n.'gt')
+    call Remap('n', '<Leader><A-'.n.'>', ':call MoveToTab('.n.')<CR>')
     let count += 1
 endwhile
 
@@ -148,35 +156,20 @@ nnoremap <S-Right> <C-w><S-l>
 nnoremap <S-Up> <C-w><S-j>
 nnoremap <S-Down> <C-w><S-k>
 
-" TODO Experimental:
+" Set pwsh as default shell 
+" Hack by https://stackoverflow.com/questions/94382/vim-with-powershell
+if has("win32")
+    set shell=cmd.exe
+    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -ExecutionPolicy\ RemoteSigned
+    set shellpipe=|
+    set shellredir=>
+endif
 
-fu! MoveToTab(a)
-    let tabcnt = tabpagenr('$')
-    let curtab = tabpagenr()
-    if (a:a > tabcnt + 1)
-        echo "Invalid tab number"a:a
-    elseif (a:a == curtab)
-        echo "You are at tab"a:a
-    else
-        let buffer = @%
-        exe 'tabn' a:a
-        exe 'tabn' curtab
-        q
-        exe 'tabn' a:a
-        exe 'vsplit' buffer
-    endif
-endfu
-
-let c=1
-while c <= 10
-    let d = c % 10
-    execute 'nnoremap <Leader>'.d ':call MoveToTab('.d.')<CR>'
-    let c += 1
-endwhile
-"nnoremap <Leader>1 :call MoveToTab(1)<CR>
+set clipboard=unnamed " Use system clipboard
+nnoremap <RightMouse> p
+vnoremap <RightMouse> y
 
 " Settings: 
-
 set mouse=a
 set number      " Show Linenumbers
 set showmatch   " Show matching closing bracket
@@ -189,3 +182,4 @@ set smarttab
 set softtabstop=4
 set expandtab
 set linebreak
+set showtabline=2 " Always show tabline
