@@ -59,7 +59,7 @@ nnoremap <silent> <C-b> :call ToggleNERD()<CR>
 
 autocmd VimEnter * call ToggleNERD()
 " Automatically opepen empty buffer if NERDTree is only thing left open
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " For colorscheme
 if (has("termguicolors"))
@@ -157,13 +157,8 @@ nnoremap <S-Up> <C-w><S-j>
 nnoremap <S-Down> <C-w><S-k>
 
 " Set pwsh as default shell 
-" Hack by https://stackoverflow.com/questions/94382/vim-with-powershell
-if has("win32")
-    set shell=cmd.exe
-    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -ExecutionPolicy\ RemoteSigned
-    set shellpipe=|
-    set shellredir=>
-endif
+set shell=powershell
+set shellcmdflag=-command
 
 set clipboard=unnamed " Use system clipboard
 nnoremap <RightMouse> p

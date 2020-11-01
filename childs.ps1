@@ -1,7 +1,7 @@
 if ($IsWindows) {
     $childs = @(
-        "$env:LOCALAPPDATA\nvim\init.vim"
-        "$env:OneDrive\Documents\PowerShell"
+        "$env:LOCALAPPDATA/nvim/init.vim"
+        "$env:OneDrive/Documents/PowerShell"
     )
 }
 elseif ($IsLinux -eq "True") {
@@ -10,7 +10,7 @@ elseif ($IsLinux -eq "True") {
 
 if ($args[0] -eq "get") {
     foreach ($child in $childs) {
-        Copy-Item -Confirm -Force $child Convert-String((Get-ChildItem $child).name)
+        Copy-Item -Confirm -Force $child "./$((Get-ChildItem $child).name)"
     }
 }
 elseif ($args[0] -eq "push") {
