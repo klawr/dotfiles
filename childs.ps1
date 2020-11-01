@@ -14,7 +14,9 @@ if ($args[0] -eq "get") {
     }
 }
 elseif ($args[0] -eq "push") {
-    # TODO
+    foreach ($child in $childs) {
+        Copy-Item -Confirm -Force "./$((Get-ChildItem $child).name)" $child
+    }
 }
 else {
     Write-Warning "arguments are get and push" -ForegroundColor Yellow
