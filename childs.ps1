@@ -16,7 +16,7 @@ if ($args[0] -eq "get") {
 }
 elseif ($args[0] -eq "push") {
     foreach ($child in $childs) {
-    	$target = Split-Path $child -leaf
+        $target = Split-Path $child -leaf
         Copy-Item -Recurse -Force $source\$target $child
     }
 }

@@ -10,6 +10,8 @@ call plug#begin("~/.vim/plugged")
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     " NERDCommenter
     Plug 'preservim/nerdcommenter'
+    " Syntax highlighting
+    Plug 'sheerun/vim-polyglot'
     " Rainbow colors for brackets
     Plug 'frazrepo/vim-rainbow'
     " Fuzzyfinder
