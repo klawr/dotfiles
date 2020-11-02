@@ -20,14 +20,12 @@ call plug#begin("~/.vim/plugged")
     " Fuzzyfinder
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-    " Plug 'git@github.com:ggreer/the_silver_searcher.git'
-    " Plug 'https://github.com/k-takata/the_silver_searcher-win32.git'  
     " Syntax highlighting   
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"    let g:coc_global_extensions = [
-"    \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',
- "   \ 'coc-powershell', 'coc-vimtex'
- "   \ ]
+    let g:coc_global_extensions = [
+    \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',
+    \ 'coc-powershell', 'coc-vimtex'
+    \ ]
     " Plug 'pprovost/vim-ps1'
     " git
     Plug 'git@github.com:tpope/vim-fugitive.git'
@@ -58,7 +56,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_splits = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
-" Coc:
+" Coc configs edited from https://github.com/neoclide/coc.nvim
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -106,8 +104,6 @@ else
     inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
@@ -133,7 +129,6 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
 nnoremap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
@@ -147,46 +142,6 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xnoremap <leader>a  <Plug>(coc-codeaction-selected)
-nnoremap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current buffer.
-nnoremap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nnoremap <leader>qf  <Plug>(coc-fix-current)
-
-" Map function and class text objects
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xnoremap if <Plug>(coc-funcobj-i)
-onoremap if <Plug>(coc-funcobj-i)
-xnoremap af <Plug>(coc-funcobj-a)
-onoremap af <Plug>(coc-funcobj-a)
-xnoremap ic <Plug>(coc-classobj-i)
-onoremap ic <Plug>(coc-classobj-i)
-xnoremap ac <Plug>(coc-classobj-a)
-onoremap ac <Plug>(coc-classobj-a)
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-" Note coc#float#scroll works on neovim >= 0.4.3 or vim >= 8.2.0750
-nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-
-" NeoVim-only mapping for visual mode scroll
-" Useful on signatureHelp after jump placeholder of snippet expansion
-if has('nvim')
-  vnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#nvim_scroll(1, 1) : "\<C-f>"
-  vnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#nvim_scroll(0, 1) : "\<C-b>"
-endif
-
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
