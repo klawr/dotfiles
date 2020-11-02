@@ -1,4 +1,6 @@
-" https://github.com/junegunn/vim-plug
+set nocompatible
+
+" https://github.com/junegunn/vim-pluag
 call plug#begin("~/.vim/plugged")
     " Theme
     Plug 'dracula/vim'
@@ -261,7 +263,9 @@ let g:fzf_action = {
 
 " ...
 function! OpenTerminal()
-    split term://pwsh
+    split
+    term
+    startinsert
     resize 12
 endfunction
 
@@ -309,7 +313,7 @@ nnoremap <silent> <C-b> :call ToggleNERD()<CR>
 :nnoremap <Leader>sv :source $MYVIMRC<cr>
 
 " Echo complete file path:
-nnoremap <Leader>n :echo expand('%:p')<CR>
+nnoremap <meader>n :echo expand('%:p')<CR>
 
 " Open terminal:
 nnoremap <C-n> :call OpenTerminal()<CR>
