@@ -276,8 +276,8 @@ augroup autocommands
     autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
     " ...
     autocmd VimEnter * call ToggleNERD()
-    " Automatically opepen empty buffer if NERDTree is only thing left open
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    " Automatically close if NERDTree is only thing left open
+    autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 
 " Mappings:
@@ -307,7 +307,7 @@ nnoremap <silent> <C-b> :call ToggleNERD()<CR>
 :nnoremap <Leader>sv :source $MYVIMRC<cr>
 
 " Echo complete file path:
-nnoremap <Leader>n :echo bufname()<CR>
+nnoremap <Leader>n :echo expand('%:p')<CR>
 
 " Open terminal:
 nnoremap <C-n> :call OpenTerminal()<CR>
@@ -390,8 +390,10 @@ nnoremap <S-Up> <C-w><S-j>
 nnoremap <S-Down> <C-w><S-k>
 
 " Set pwsh as default shell 
-" set shell=powershell
-" set shellcmdflag=-command
+set shell=powershell.exe
+set shellcmdflag=-NoLogo\ -NonInteractive\ -Command
+set shellpipe=!
+set shellredir=>
 
 nnoremap <C-f> /
 inoremap <C-f> :normal /
