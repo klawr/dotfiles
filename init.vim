@@ -1,3 +1,4 @@
+language en
 set nocompatible
 
 " https://github.com/junegunn/vim-pluag
@@ -23,10 +24,10 @@ call plug#begin("~/.vim/plugged")
     " Plug 'https://github.com/k-takata/the_silver_searcher-win32.git'  
     " Syntax highlighting   
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    let g:coc_global_extensions = [
-    \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',
-    \ 'coc-powershell', 'coc-vimtex'
-    \ ]
+"    let g:coc_global_extensions = [
+"    \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',
+ "   \ 'coc-powershell', 'coc-vimtex'
+ "   \ ]
     " Plug 'pprovost/vim-ps1'
     " git
     Plug 'git@github.com:tpope/vim-fugitive.git'
