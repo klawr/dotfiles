@@ -1,5 +1,9 @@
 
-$paths = "C:\ProgramData\Miniconda3\Scripts\conda.exe", "C:\Program Files\Mozilla Firefox\firefox.exe", "C:\Users\me\OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe";
+$paths = @(
+    "$env:ProgramData\Miniconda3\Scripts\conda.exe"
+    "$env:ProgramFiles\Mozilla Firefox\firefox.exe"
+    "$env:OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe"
+)
 
 foreach ($path in $paths) {
     $leaf = [System.IO.Path]::GetFileNameWithoutExtension($path)
@@ -43,8 +47,15 @@ Function DEV {
 
 Set-Variable PROFILEPATH $HOME\OneDrive\Documents\PowerShell
 Function PROFILE {
-    code -n $PROFILEPATH -g $PROFILEPATH\profile.ps1
+    nvim $PROFILEPATH\profile.ps1
+    # code -n $PROFILEPATH -g $PROFILEPATH\profile.ps1
 }
+
+Set-Variable NVIMPROFILE $HOME\AppData\Local\nvim\init.vim
+Function nvimconfig {
+    nvim $NVIMPROFILE
+}
+
 Function LOAD_GIT_MODULE {
     Write-Progress "Loading posh-git"
     Import-Module "$PROFILEPATH\Modules\posh-git\1.0.0\posh-git.psd1"
@@ -71,5 +82,4 @@ Function BUILD {
         Write-Host "You are not in " $DEVPATH -ForegroundColor Red
         Write-Host "Type DEV to get there..." -ForegroundColor Red
     }
-
 }

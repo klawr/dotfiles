@@ -1,7 +1,8 @@
 if ($IsWindows) {
+    $source = "$env:UserProfile\devel\dotfiles"
     $childs = @(
         "$env:LOCALAPPDATA\nvim\init.vim"
-        "$env:OneDrive\Documents\PowerShell"
+        "$env:OneDrive\Documents\PowerShell\"
     )
 }
 elseif ($IsLinux -eq "True") {
@@ -10,14 +11,13 @@ elseif ($IsLinux -eq "True") {
 
 if ($args[0] -eq "get") {
     foreach ($child in $childs) {
-    	$target = Split-Path $child -leaf
-        Copy-Item -Recurse -Confirm -Force $child $target
+        Copy-Item -Recurse -Force $child $source
     }
 }
 elseif ($args[0] -eq "push") {
     foreach ($child in $childs) {
     	$target = Split-Path $child -leaf
-        Copy-Item -Recurse -Confirm -Force $target $child
+        Copy-Item -Recurse -Force $source\$target $child
     }
 }
 else {
