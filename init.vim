@@ -385,4 +385,21 @@ set showtabline=2 " Always show tabline
 syntax enable
 if exists("g:loaded_webdevicons")
     call webdevicons#refresh()
+
+  fu NERDTreeCustomExplorer(node)
+    exe ":!explorer ".a:node.path.str()
+  endfu
+
+  call NERDTreeAddKeyMap({
+      \ 'key': 'h',
+      \ 'scope': 'Node',
+      \ 'callback': "NERDTreeCustomExplorer",
+      \ 'quickhelpText': 'open explorer on node' })
+endif
+" https://stackoverflow.com/questions/94382/vim-with-powershell
+if has("win32")
+    set shell=cmd.exe
+    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NoProfile\ -NonInteractive\ -ExecutionPolicy\ RemoteSigned
+    set shellpipe=|
+    set shellredir=>
 endif
