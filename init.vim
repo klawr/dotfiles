@@ -239,7 +239,7 @@ augroup autocommands
     " ...
     autocmd VimEnter * call ToggleNERD()
     " Automatically close if NERDTree is only thing left open
-    autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    " autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 
 " Mappings:
@@ -388,7 +388,13 @@ if exists("g:loaded_webdevicons")
 
   fu NERDTreeCustomExplorer(node)
     exe ":!explorer ".a:node.path.str()
+    silent "<CR>"
   endfu
+  call NERDTreeAddKeyMap({
+      \ 'key': 'g',
+      \ 'scope': 'Node',
+      \ 'callback': "NERDTreeCustomExplorer",
+      \ 'quickhelpText': 'open explorer on node' })
 
   call NERDTreeAddKeyMap({
       \ 'key': 'h',
