@@ -319,7 +319,8 @@ while index >= 0
     " Move from terminal to the window in the respective direction
     call Remap('t', '<C-'.t.'>', '<C-\><C-n><C-w>'.s)
     " Same for moving from normal mode
-    call Remap('n', '<C-'.t.'>', '<C-w>'.s)
+    " Alt + arrows is moving in windows terminal
+    call Remap('n', '<A-'.t.'>', '<C-w>'.s)
     let index -= 1  
 endwhile
 
