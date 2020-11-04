@@ -17,7 +17,14 @@ if ($args[0] -eq "get") {
 elseif ($args[0] -eq "push") {
     foreach ($child in $childs) {
         $target = Split-Path $child -leaf
-        Copy-Item -Recurse -Force "$source\$target" $child
+        if (Test-Path $target -PathType Container) {
+            $targets = Get-ChildItem($target)
+            foreach ($tar in $targets) {
+                Copy-Item -Recurse -Force $tar $child
+            }
+        } else {
+            Copy-Item -Recurse -Force "$source\$target" $child
+        }
     }
 }
 else {
