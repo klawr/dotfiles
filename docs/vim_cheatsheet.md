@@ -6,9 +6,10 @@
 "tags": ["vim", "nvim", "cheatsheet"]
 ---
 
-| (n)vim Cheatsheet | [back](./index.html) |
-| :-- | :-- |
-| <h3>Cursor movement</h3> | |
+### nvim cheatsheet
+
+| <h2>Cursor movement</h2> | |
+| :-- | --: |
 Cursor movement { left, down, up, right } |  ~~h~~, ~~j~~, ~~k~~, l &rarr; j, k, i, l
 Move to { top, mid, bottom } of screen | ~~`H`~~ &rarr; `J`, `M`, `L`
 Jump forwards to { start, end } of a word + ignoring punctuation | `w`, `e` + `W`, `E`
@@ -30,7 +31,9 @@ Set current cursor position as position **n** | `m`**n**
 Jump to position **n** | <code>\`</code>**n** &rarr; `,`**n**
 Jump to position before jump | <code>\`\`</code> &rarr; `,,`
 Go to latest change in file | <code>\`.</code> &rarr; `,.`
-| <h3>Editing</h3> | |
+
+| <h2>Editing</h2> | |
+| :-- | --: |
 Replace single character | **r**
 Join line below with current line { with, without } space | `J`, `gJ`
 { Lower-, Upper-, switch } case up to next movement | `g~`, `gu`, `gU`
@@ -44,7 +47,9 @@ Paste { before, after } cursor | `p`, `P`
 Reindent buffer (see honorable mentions why this works) | `gg=G`
 { Undo, Restore last changed line, Redo } | `u`, `U`, `<C-r>`
 Repeat last command | `.`
-| <h3>Insert mode</h3> |  |
+
+| <h2>Insert mode</h2> |  |
+| :-- | --: |
 Enter insert mode { before, after } cursor | ~~`i`~~ &rarr; `h`, `a`
 Enter insert mode at the { beginning, end } of the line | ~~`I`~~ &rarr; `H`, `A`
 Open a new line { below, above } the current line and enter insert mode | `o`, `O`
@@ -54,7 +59,9 @@ New line (during insert mode) | `<C-j>`
 { Indent, Deindet } (during insert mode) | `<C-t>`, `<C-d>`
 Insert { previous, next } best guess (auto-complete) (during insert mode) | `<C-p>`, `<C-n>`
 ~~Insert content of register **x**~~ ** | ~~`<C-r>`**x**~~ **
-| <h3>Visual mode</h3> |  |
+
+| <h2>Visual mode</h2> |  |
+| :-- | --: |
 Start visual mode { normal, linewise, blockmode } | `v`, `V`, `<C-v>`
 Move between { start or end, corners } of selection | `o`, `O`
 Mark a word | `aw`
@@ -62,7 +69,9 @@ Mark between { **()**, **{}**, **<>** } + in { inner ,outer } block | `ib`, `iB`
 { Lower, upper, switch } case for marked text | `u`, `U`, `~`
 Shift marked text { left, right } | `<`, `>`
 { Copy (yank), Delete (cut) } marked text | `y`, `d`
-| <h3>Layout</h3> | |
+
+| <h2>Layout</h2> | |
+| :-- | --: |
 Move split into own tab | `<C-w>T`
 Move to { previous, next } tab | `gT` &rarr; `<C-j>`, `gt` &rarr; `<C-l>`
 Move to tab number **n** | **n**`gt` or `<A-`**n**`>`
@@ -72,7 +81,9 @@ Split window {, vertically} | `<C-w>s`, `<C-w>v`
 Switch windows {, with next one } | `<C-w>w`, `<C-w>x`
 Quit window | `<C-w>q`
 Move cursor to window { left, down, up, right } | ~~`<C-w>h`~~, ~~`<C-w>j`~~, ~~`<C-w>k`~~, ~~`<C-w>l`~~ &rarr; `<C-w>j`, `<C-w>k`, `<C-w>i`, `<C-w>l`
-| <h3>Commands | |
+
+| <h2>Commands</h2> | |
+| :-- | --: |
 {Write (W), Quit (Q), Force (F) Q, W & Q, Q all (a), F Q a, W & Q a} | `:w`, `:q`, `:q!`, `:wq`, `:qa`, `:qa!`, `:wqa`
 Edit in new buffer | `:e`
 Go to { next, previous } buffer | `:bn`, `:bp`
@@ -85,7 +96,9 @@ Replace all **abc** with **def** in buffer + confirmation | `:%s/`**abc**`/`**de
 Open file in new buffer and split window {, vertically} | `:sp`, `:vs`
 Open all buffers as { vertical windows, tabs } | `:vert`, `:tab ba`
 Run command on all { tabs, windows of active tab } | `:tabdo`, `:windo`
-| <h3>Honorable mentions</h3> |  |
+
+| <h2>Honorable mentions</h2> |  |
+| :-- | --: |
 Indent a block with **()** or **{}** (cursor on brace) | `>%`
 {Re-}Indent block with + { **()**, **{}**, **<>** } | `=ib`, `=iB`, `=at` + `>ib`, `>iB`, `>at`
 Paste and adjust indent in current line | `]p`
@@ -99,11 +112,15 @@ Go to { newer, older } position in + { jump, change} list | `<C-i>`, `<C-o>`, `g
 Jump to tag under cursor | `<C-]>`
 Search **abc** using regex magic | `\v`**abc**
 Open help for word under cursor | `K`
-| <h3>Custom</h3> |  |
+
+| <h2>Custom</h2> |  |
+| :-- | --: |
 | Toggle *NERDTree* | `<C-b>`
 | **:noh** (Remove hightlights; e.g. from search) | `<Leader><Esc>`
 | Open FuzzyFinder | `<C-p>`
-| <h3>NERDTree</h3> |  |
+
+| <h2>NERDTree</h2> |  |
+| :-- | --: |
 Open file in { prev window, split, vsplit, new tab + silent } | `<cr>` or `o`, `i`, `s`, `t` + `T`
 Open file in preview { prev window, split, vsplit } | `go`, `gi`, `gs`
 {Recursevly Open, Open or Close, explore} directory | `O`, `o`, `e`
