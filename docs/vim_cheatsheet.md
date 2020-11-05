@@ -66,6 +66,8 @@ Shift marked text { left, right } | `<`, `>`
 Move split into own tab | `<C-w>T`
 Move to { previous, next } tab | `gT` &rarr; `<C-j>`, `gt` &rarr; `<C-l>`
 Move to tab number **n** | **n**`gt` or `<A-`**n**`>`
+Move current tab to position **n** | `:tabm` **n**
+Close { current tab, all tabs but current one } | `:tabc`, `:tabo`
 Split window {, vertically} | `<C-w>s`, `<C-w>v`
 Switch windows {, with next one } | `<C-w>w`, `<C-w>x`
 Quit window | `<C-w>q`
@@ -82,6 +84,7 @@ Repeat search in { same, opposite } direction | `n`, `N`
 Replace all **abc** with **def** in buffer + confirmation | `:%s/`**abc**`/`**def**`/g`, `.../`**def**`/gc`
 Open file in new buffer and split window {, vertically} | `:sp`, `:vs`
 Open all buffers as { vertical windows, tabs } | `:vert`, `:tab ba`
+Run command on all { tabs, windows of active tab } | `:tabdo`, `:windo`
 | <h3>Honorable mentions</h3> |  |
 Indent a block with **()** or **{}** (cursor on brace) | `>%`
 {Re-}Indent block with + { **()**, **{}**, **<>** } | `=ib`, `=iB`, `=at` + `>ib`, `>iB`, `>at`
@@ -95,6 +98,7 @@ Go to position { where vim was exited, when last editing file, of last change } 
 Go to { newer, older } position in + { jump, change} list | `<C-i>`, `<C-o>`, `g,`, `g;`
 Jump to tag under cursor | `<C-]>`
 Search **abc** using regex magic | `\v`**abc**
+Open help for word under cursor | `K`
 | <h3>Custom</h3> |  |
 | Toggle *NERDTree* | `<C-b>`
 | **:noh** (Remove hightlights; e.g. from search) | `<Leader><Esc>`
@@ -116,3 +120,9 @@ Toggle { hidden files, file filters, files, bookmarks, maximize, help } | ~~`I`~
 
 <p>* See custom commands <br>
 ** Registers are set to system registers (set clipboard = unnamed)</p>
+
+---
+### TODO:
+- Check folds
+- Fuzzyfind hotkeys
+- Coc Hotkeys
