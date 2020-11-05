@@ -1,7 +1,7 @@
 if ($IsWindows) {
     $source = "$env:UserProfile\devel\dotfiles"
     $childs = @(
-        "$env:LOCALAPPDATA\nvim\init.vim"
+        "$env:LOCALAPPDATA\nvim"
         "$env:OneDrive\Documents\PowerShell"
     )
 }
