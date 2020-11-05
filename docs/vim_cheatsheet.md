@@ -6,7 +6,7 @@
 "tags": ["vim", "nvim", "cheatsheet"]
 ---
 
-|  | (n)vim Cheatsheet |
+| (n)vim Cheatsheet | [back](./index.html) |
 | :-- | --: |
 | <h3>Cursor movement</h3> | |
 Cursor movement { left, down, up, right } |  ~~h~~, ~~j~~, ~~k~~, l &rarr; j, k, i, l
