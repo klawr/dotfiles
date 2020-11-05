@@ -14,6 +14,10 @@ foreach ($path in $paths) {
     }
 }
 
+Function CLEANTEMP {
+    Remove-Item -Recurse -Force -ErrorAction Ignore $env:TEMP
+}
+
 Function DEV {
     $path = "$HOME\devel"
 
