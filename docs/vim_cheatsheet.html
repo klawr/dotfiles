@@ -300,6 +300,10 @@
 <td style="text-align:left">Move cursor to window { left, down, up, right }</td>
 <td style="text-align:right"><s><code>&lt;C-w&gt;h</code></s>, <s><code>&lt;C-w&gt;j</code></s>, <s><code>&lt;C-w&gt;k</code></s>, <s><code>&lt;C-w&gt;l</code></s> → <code>&lt;C-w&gt;j</code>, <code>&lt;C-w&gt;k</code>, <code>&lt;C-w&gt;i</code>, <code>&lt;C-w&gt;l</code></td>
 </tr>
+<tr>
+<td style="text-align:left">{ Increase, Decrase } window size + { hor, vert }</td>
+<td style="text-align:right"><code>&lt;C-w&gt;&gt;</code>, <code>&lt;C-w&gt;&lt;</code> + <code>&lt;C-w&gt;+</code>, <code>&lt;C-w&gt;-</code></td>
+</tr>
 </tbody>
 </table>
 <table>
@@ -368,6 +372,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left">Leave mode</td>
+<td style="text-align:right"><code>&lt;Esc&gt;</code> → <code>jj</code></td>
+</tr>
 <tr>
 <td style="text-align:left">Indent a block with <strong>()</strong> or <strong>{}</strong> (cursor on brace)</td>
 <td style="text-align:right"><code>&gt;%</code></td>
@@ -441,6 +449,10 @@
 <tr>
 <td style="text-align:left">Open FuzzyFinder</td>
 <td style="text-align:right"><code>&lt;C-p&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Remove whitespaces and reindent file</td>
+<td style="text-align:right"><code>mz:%s/\s\+$//e&lt;CR&gt;gg=G&lt;CR&gt;`zzz:noh&lt;CR&gt;</code> → <code>&lt;A-f&gt;</code></td>
 </tr>
 </tbody>
 </table>

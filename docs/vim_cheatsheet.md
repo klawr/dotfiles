@@ -81,6 +81,7 @@ Split window {, vertically} | `<C-w>s`, `<C-w>v`
 Switch windows {, with next one } | `<C-w>w`, `<C-w>x`
 Quit window | `<C-w>q`
 Move cursor to window { left, down, up, right } | ~~`<C-w>h`~~, ~~`<C-w>j`~~, ~~`<C-w>k`~~, ~~`<C-w>l`~~ &rarr; `<C-w>j`, `<C-w>k`, `<C-w>i`, `<C-w>l`
+{ Increase, Decrase } window size + { hor, vert } | `<C-w>>`, `<C-w><` + `<C-w>+`, `<C-w>-`
 
 | <h2>Commands</h2> | |
 | :-- | --: |
@@ -99,6 +100,7 @@ Run command on all { tabs, windows of active tab } | `:tabdo`, `:windo`
 
 | <h2>Honorable mentions</h2> |  |
 | :-- | --: |
+Leave mode | `<Esc>` &rarr; `jj`
 Indent a block with **()** or **{}** (cursor on brace) | `>%`
 {Re-}Indent block with + { **()**, **{}**, **<>** } | `=ib`, `=iB`, `=at` + `>ib`, `>iB`, `>at`
 Paste and adjust indent in current line | `]p`
@@ -118,6 +120,7 @@ Open help for word under cursor | `K`
 | Toggle *NERDTree* | `<C-b>`
 | **:noh** (Remove hightlights; e.g. from search) | `<Leader><Esc>`
 | Open FuzzyFinder | `<C-p>`
+| Remove whitespaces and reindent file | ```mz:%s/\s\+$//e<CR>gg=G<CR>`zzz:noh<CR>``` &rarr; `<A-f>`
 
 | <h2>NERDTree</h2> |  |
 | :-- | --: |
