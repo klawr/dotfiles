@@ -269,12 +269,17 @@ nnoremap <silent> <C-b> :call ToggleNERD()<CR>
 :nnoremap <Leader>sv :source $MYVIMRC<cr>
 
 " Echo complete file path:
-nnoremap <meader>n :echo expand('%:p')<CR>
+nnoremap <Leader>n :echo expand('%:p')<CR>
 
 " Open terminal:
 nnoremap <C-n> :call OpenTerminal()<CR>
 " Turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
+" Escape with jj in insert mode
+inoremap jj <Esc>
+" Jump to marks using ,
+nnoremap , `
+nnoremap ,, ``
 
 " Close window
 nnoremap qq :q<CR>
@@ -325,12 +330,12 @@ while index >= 0
 endwhile
 
 " Remap l for custom mappings:
-tnoremap <C-l> <C-\><C-n><C-w>l
-nnoremap <C-l> <C-w>l
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-l> <C-w>l
 
 " Next and previous tab
-nnoremap <A-j> gT
-nnoremap <A-l> gt
+nnoremap <C-j> gT
+nnoremap <C-l> gt
 
 nnoremap <Leader>b :ls<CR>
 
@@ -368,6 +373,7 @@ inoremap <RightMouse> <Esc>:normal p<CR>a
 
 " Always open help in new tab
 :cabbrev help tab help
+:cabbrev git Git
 " Settings: 
 set mouse=a
 set number      " Show Linenumbers
