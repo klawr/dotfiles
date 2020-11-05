@@ -1,47 +1,30 @@
 language en
 set nocompatible
 
-" https://github.com/junegunn/vim-pluag
 call plug#begin("~/.vim/plugged")
-    " Theme
-    Plug 'dracula/vim'
-    Plug 'git@github.com:rakr/vim-one.git'
-    Plug 'git@github.com:morhetz/gruvbox.git'
-    " NERDTree and Icons
-    Plug 'scrooloose/nerdtree'
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    " NERDCommenter
-    Plug 'preservim/nerdcommenter'
-    " Syntax highlighting
-    Plug 'sheerun/vim-polyglot'
-    " Rainbow colors for brackets
-    Plug 'frazrepo/vim-rainbow'
-    " Fuzzyfinder
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
-    " Syntax highlighting   
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    let g:coc_global_extensions = [
-    \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',
-    \ 'coc-powershell', 'coc-vimtex'
-    \ ]
-    " Plug 'pprovost/vim-ps1'
-    " git
-    Plug 'git@github.com:tpope/vim-fugitive.git'
-    Plug 'git@github.com:airblade/vim-gitgutter.git'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-
-    " Plug 'itchyny/lightline.vim'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    " Syntax checking
-    Plug 'git@github.com:dense-analysis/ale.git'
-
-    " LaTeX
-    Plug 'lervag/vimtex'
-
-    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'rakr/vim-one'
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'preservim/nerdcommenter'
+Plug 'sheerun/vim-polyglot'
+Plug 'frazrepo/vim-rainbow'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+            \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',
+            \ 'coc-powershell', 'coc-vimtex'
+            \ ]
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'dense-analysis/ale'
+Plug 'jiangmiao/auto-pairs'
+Plug 'lervag/vimtex'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 call plug#end()
 
 " Plugin Configs:
@@ -77,24 +60,24 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
+    " Recently vim can merge signcolumn and number column into one
+    set signcolumn=number
 else
-  set signcolumn=yes
+    set signcolumn=yes
 endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
@@ -105,7 +88,7 @@ else
 endif
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " GoTo code navigation.
 nnoremap <silent> gd <Plug>(coc-definition)
@@ -117,13 +100,13 @@ nnoremap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+        call CocActionAsync('doHover')
+    else
+        execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
@@ -136,11 +119,11 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Add `:Format` command to format current buffer.
@@ -188,6 +171,7 @@ let g:tex_flavor = 'latex'
 let g:rainbow_active = 1
 " NERDTree
 let g:NERDTreeShowHidden = 1
+let NERDTreeDirArrows = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
@@ -211,11 +195,10 @@ set background=dark
 
 " Fuzzyfinder
 let g:fzf_action = {
-  \ 'enter': 'tab split',
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit'
-  \}
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-s': 'split',
+            \ 'ctrl-v': 'vsplit'
+            \}
 
 " ...
 function! OpenTerminal()
@@ -243,7 +226,7 @@ augroup autocommands
 augroup END
 
 " Mappings:
- 
+
 " Leader Mappings:
 
 nnoremap <SPACE> <Nop>
@@ -281,6 +264,10 @@ inoremap jj <Esc>
 nnoremap , `
 nnoremap ,, ``
 
+" Set mark z, clean all whitespaces, reindent whole buffer
+" Move back to z, center cursor and remove highlights on whitespaces
+nnoremap <A-f> mz:%s/\s\+$//e<CR>gg=G<CR>`zzz:noh<CR>
+
 " Close window
 nnoremap qq :q<CR>
 
@@ -303,11 +290,11 @@ endfu
 let poker = ['h', 'j', 'k', 'i']
 " Replace all these movement mappings with poker style:
 let mvmap = [
-    \ ['<C-\><C-n><C-w>', ''],
-    \ ['<C-w>', ''],
-    \ ['<S-', '>'],
-    \ ['', '']
-\ ]
+            \ ['<C-\><C-n><C-w>', ''],
+            \ ['<C-w>', ''],
+            \ ['<S-', '>'],
+            \ ['', '']
+            \ ]
 let index = len(poker) - 1
 while index >= 0
     let t = poker[index]
@@ -320,13 +307,12 @@ while index >= 0
     endfor
 
     " Custom movement mappings:
-
     " Move from terminal to the window in the respective direction
     call Remap('t', '<C-'.t.'>', '<C-\><C-n><C-w>'.s)
     " Same for moving from normal mode
     " Alt + arrows is moving in windows terminal
     call Remap('n', '<A-'.t.'>', '<C-w>'.s)
-    let index -= 1  
+    let index -= 1
 endwhile
 
 " Remap l for custom mappings:
@@ -345,7 +331,7 @@ while count <= 10
     " 10 must evaluate to 0
     let n = count % 10
     " Open Buffer nr n using <Fn>
-    call Remap('n', '<Leader>'.n, ':'.n.'b<CR>') 
+    call Remap('n', '<Leader>'.n, ':'.n.'b<CR>')
     " Go to tab number n using <A-n>
     call Remap('n', '<A-'.n.'>', n.'gt')
     let count += 1
@@ -357,7 +343,7 @@ nnoremap <S-Right> <C-w><S-l>
 nnoremap <S-Up> <C-w><S-j>
 nnoremap <S-Down> <C-w><S-k>
 
-" Set pwsh as default shell 
+" Set pwsh as default shell
 set shell=powershell.exe
 set shellcmdflag=-NoLogo\ -NonInteractive\ -Command
 set shellpipe=!
@@ -374,7 +360,7 @@ inoremap <RightMouse> <Esc>:normal p<CR>a
 " Always open help in new tab
 :cabbrev help tab help
 :cabbrev git Git
-" Settings: 
+" Settings:
 set mouse=a
 set number      " Show Linenumbers
 set showmatch   " Show matching closing bracket
@@ -393,21 +379,21 @@ syntax enable
 if exists("g:loaded_webdevicons")
     call webdevicons#refresh()
 
-  fu NERDTreeCustomExplorer(node)
-    exe ":!explorer ".a:node.path.str()
-    silent "<CR>"
-  endfu
-  call NERDTreeAddKeyMap({
-      \ 'key': 'g',
-      \ 'scope': 'Node',
-      \ 'callback': "NERDTreeCustomExplorer",
-      \ 'quickhelpText': 'open explorer on node' })
+    fu NERDTreeCustomExplorer(node)
+        exe ":!explorer ".a:node.path.str()
+        silent "<CR>"
+    endfu
+    call NERDTreeAddKeyMap({
+                \ 'key': 'g',
+                \ 'scope': 'Node',
+                \ 'callback': "NERDTreeCustomExplorer",
+                \ 'quickhelpText': 'open explorer on node' })
 
-  call NERDTreeAddKeyMap({
-      \ 'key': 'h',
-      \ 'scope': 'Node',
-      \ 'callback': "NERDTreeCustomExplorer",
-      \ 'quickhelpText': 'open explorer on node' })
+    call NERDTreeAddKeyMap({
+                \ 'key': 'h',
+                \ 'scope': 'Node',
+                \ 'callback': "NERDTreeCustomExplorer",
+                \ 'quickhelpText': 'open explorer on node' })
 endif
 " https://stackoverflow.com/questions/94382/vim-with-powershell
 if has("win32")
