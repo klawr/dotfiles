@@ -7,7 +7,7 @@
 ---
 
 | (n)vim Cheatsheet | [back](./index.html) |
-| :-- | --: |
+| :-- | :-- |
 | <h3>Cursor movement</h3> | |
 Cursor movement { left, down, up, right } |  ~~h~~, ~~j~~, ~~k~~, l &rarr; j, k, i, l
 Move to { top, mid, bottom } of screen | ~~`H`~~ &rarr; `J`, `M`, `L`
@@ -42,7 +42,7 @@ Shift text { left, right } | `<<`, `>>`
 Delete character | `x`
 Paste { before, after } cursor | `p`, `P`
 Reindent buffer (see honorable mentions why this works) | `gg=G`
-{ Undo, Restore last changed line, Redo } | `u`, `U`, `<C-p>`
+{ Undo, Restore last changed line, Redo } | `u`, `U`, `<C-r>`
 Repeat last command | `.`
 | <h3>Insert mode</h3> |  |
 Enter insert mode { before, after } cursor | ~~`i`~~ &rarr; `h`, `a`
@@ -62,9 +62,41 @@ Mark between { **()**, **{}**, **<>** } + in { inner ,outer } block | `ib`, `iB`
 { Lower, upper, switch } case for marked text | `u`, `U`, `~`
 Shift marked text { left, right } | `<`, `>`
 { Copy (yank), Delete (cut) } marked text | `y`, `d`
+| <h3>Layout</h3> | |
+Move split into own tab | `<C-w>T`
+Move to { previous, next } tab | `gT` &rarr; `<C-j>`, `gt` &rarr; `<C-l>`
+Move to tab number **n** | **n**`gt` or `<A-`**n**`>`
+Split window {, vertically} | `<C-w>s`, `<C-w>v`
+Switch windows {, with next one } | `<C-w>w`, `<C-w>x`
+Quit window | `<C-w>q`
+Move cursor to window { left, down, up, right } | ~~`<C-w>h`~~, ~~`<C-w>j`~~, ~~`<C-w>k`~~, ~~`<C-w>l`~~ &rarr; `<C-w>j`, `<C-w>k`, `<C-w>i`, `<C-w>l`
+| <h3>Commands | |
+{Write (W), Quit (Q), Force (F) Q, W & Q, Q all (a), F Q a, W & Q a} | `:w`, `:q`, `:q!`, `:wq`, `:qa`, `:qa!`, `:wqa`
+Edit in new buffer | `:e`
+Go to { next, previous } buffer | `:bn`, `:bp`
+Go to buffer **n** (number of filename) | `:b`**n**
+List buffers | ':ls' or ':buffers'
+Delete buffer | `:bd`
+Search { forwards, backwards } **abc** | `/`**abc** or `<C-f>`**abc**, `?`**abc**
+Repeat search in { same, opposite } direction | `n`, `N`
+Replace all **abc** with **def** in buffer + confirmation | `:%s/`**abc**`/`**def**`/g`, `.../`**def**`/gc`
+Open file in new buffer and split window {, vertically} | `:sp`, `:vs`
+Open all buffers as { vertical windows, tabs } | `:vert`, `:tab ba`
+| <h3>Honorable mentions</h3> |  |
+Indent a block with **()** or **{}** (cursor on brace) | `>%`
+{Re-}Indent block with + { **()**, **{}**, **<>** } | `=ib`, `=iB`, `=at` + `>ib`, `>iB`, `>at`
+Paste and adjust indent in current line | `]p`
+Reindent **n** lines | **n**==
+~~{ Copy, paste } into register **n** (x for system clipboard)~~** | `ny`, `np`
+{ Record, Run } macro **n** | `q`**n**, `@`**n**
+Stop recording | `q`
+Rerun last macro | `@@`
+Go to position { where vim was exited, when last editing file, of last change } | <code>\`0</code>, <code>\`"</code>
+Go to { newer, older } position in + { jump, change} list | `<C-i>`, `<C-o>`, `g,`, `g;`
+Jump to tag under cursor | `<C-]>`
+Search **abc** using regex magic | `\v`**abc**
 | <h3>Custom</h3> |  |
 | Toggle *NERDTree* | `<C-b>`
-| **/** (search) | `<C-f>`
 | **:noh** (Remove hightlights; e.g. from search) | `<Leader><Esc>`
 | Open FuzzyFinder | `<C-p>`
 | <h3>NERDTree</h3> |  |
@@ -81,18 +113,6 @@ Go to { parent, root}  | `p`, `P`
 Go to {first, last} child | ~~`K`~~, ~~`J`~~ &rarr; `I`, `K`
 Go to {previous, next} sibling | ~~`<C-k>`~~, ~~`<C-J>`~~ &rarr; `<C-i>`, `<C-k>`
 Toggle { hidden files, file filters, files, bookmarks, maximize, help } | ~~`I`~~ &rarr; `H`, `f`, `F`, `B`, `A`, `?`
-| <h3>Honorable mentions</h3> |  |
-Indent a block with **()** or **{}** (cursor on brace) | `>%`
-{Re-}Indent block with + { **()**, **{}**, **<>** } | `=ib`, `=iB`, `=at` + `>ib`, `>iB`, `>at`
-Paste and adjust indent in current line | `]p`
-Reindent **n** lines | **n**==
-~~{ Copy, paste } into register **n** (x for system clipboard)~~** | `ny`, `np`
-{ Record, Run } macro **n** | `q`**n**, `@`**n**
-Stop recording | `q`
-Rerun last macro | `@@`
-Go to position { where vim was exited, when last editing file, of last change,  }, | <code>\`0</code>, <code>\`"</code>
-Go to { newer, older } position in + { jump, change} list | `<C-i>`, `<C-o>`, `g,`, `g;`
-Jump to tag under cursor | `<C-]>`
 
 <p>* See custom commands <br>
 ** Registers are set to system registers (set clipboard = unnamed)</p>
