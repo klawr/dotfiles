@@ -165,6 +165,8 @@ inoremap <F2> <Esc><Plug>(coc-rename)a
 
 " Hide mode, because lightline already does it
 set noshowmode
+" Set minimum height windows to 0
+set wmh=0
 
 let g:tex_flavor = 'latex'
 
