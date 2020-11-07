@@ -399,13 +399,19 @@ if exists("g:loaded_webdevicons")
                 \ 'callback': "NERDTreeMapOpenSplit",
                 \ 'quickhelpText': 'open explorer on node' })
     " Used to overwrite...
-    fu NERDTreeCustomNone()
+    fu NERDTreeCustomUp(...)
         normal! k
     endfu
     call NERDTreeAddKeyMap({
                 \ 'key': 'i',
                 \ 'override': 1,
-                \ 'callback': "NERDTreeCustomNone"
+                \ 'callback': 'NERDTreeCustomUp'
+                \ })
+    call NERDTreeAddKeyMap({
+                \ 'key': 'i',
+                \'override': 1,
+                \'scope': 'FileNode',
+                \'callback': 'NERDTreeCustomUp'
                 \ })
 endif
 " https://stackoverflow.com/questions/94382/vim-with-powershell
