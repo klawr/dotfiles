@@ -388,14 +388,25 @@ if exists("g:loaded_webdevicons")
     call NERDTreeAddKeyMap({
                 \ 'key': 'g',
                 \ 'scope': 'Node',
+                \ 'override': 1,
                 \ 'callback': "NERDTreeCustomExplorer",
                 \ 'quickhelpText': 'open explorer on node' })
 
     call NERDTreeAddKeyMap({
                 \ 'key': 'h',
                 \ 'scope': 'Node',
-                \ 'callback': "NERDTreeCustomExplorer",
+                \ 'override': 1,
+                \ 'callback': "NERDTreeMapOpenSplit",
                 \ 'quickhelpText': 'open explorer on node' })
+    " Used to overwrite...
+    fu NERDTreeCustomNone()
+        normal! k
+    endfu
+    call NERDTreeAddKeyMap({
+                \ 'key': 'i',
+                \ 'override': 1,
+                \ 'callback': "NERDTreeCustomNone"
+                \ })
 endif
 " https://stackoverflow.com/questions/94382/vim-with-powershell
 if has("win32")
