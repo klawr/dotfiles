@@ -120,7 +120,7 @@ Open help for word under cursor | `K`
 | Toggle *NERDTree* | `<C-b>`
 | **:noh** (Remove hightlights; e.g. from search) | `<Leader><Esc>`
 | Open FuzzyFinder | `<C-p>`
-| Remove whitespaces and reindent file | ```mz:%s/\s\+$//e<CR>gg=G<CR>`zzz:noh<CR>``` &rarr; `<A-f>`
+| Remove whitespaces and reindent file | ```mz:%s/\s\+$//e<CR>gg=G<CR>`zzz:noh<CR>``` &rarr; `<A-F>`
 
 | <h2>NERDTree</h2> |  |
 | :-- | --: |
