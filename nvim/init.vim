@@ -268,7 +268,7 @@ nnoremap ,, ``
 
 " Set mark z, clean all whitespaces, reindent whole buffer
 " Move back to z, center cursor and remove highlights on whitespaces
-nnoremap <A-f> mz:%s/\s\+$//e<CR>gg=G<CR>`zzz:noh<CR>
+nnoremap <A-F> mz:%s/\s\+$//e<CR>gg=G<CR>`zzz:noh<CR>
 
 " Close window
 nnoremap qq :q<CR>
