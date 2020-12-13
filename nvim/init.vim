@@ -7,14 +7,13 @@ Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdcommenter'
 "Plug 'sheerun/vim-polyglot'
 Plug 'frazrepo/vim-rainbow'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
             \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',
             \ 'coc-powershell', 'coc-vimtex'
             \ ]
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'mg979/vim-visual-multi', {'branch': 'master'},
+Plug 'https://github.com/airblade/vim-gitgutter.git'
 call plug#end()
 
 " ************************************************************
@@ -159,13 +158,6 @@ syntax enable
 "colorscheme one
 colorscheme gruvbox
 set background=dark
-
-" Fuzzyfinder
-let g:fzf_action = {
-            \ 'ctrl-t': 'tab split',
-            \ 'ctrl-s': 'split',
-            \ 'ctrl-v': 'vsplit'
-            \}
 
 " ...
 function! OpenTerminal()
