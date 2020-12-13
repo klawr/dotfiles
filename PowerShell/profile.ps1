@@ -14,6 +14,11 @@ foreach ($path in $paths) {
     }
 }
 
+Function ddg {
+    $arg = $args | Join-String -Separator "+"
+    firefox "https://duckduckgo.com/?q=$arg"
+}
+
 Function CLEANTEMP {
     Remove-Item -Recurse -Force -ErrorAction Ignore $env:TEMP
 }
