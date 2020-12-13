@@ -14,6 +14,15 @@ foreach ($path in $paths) {
     }
 }
 
+# Only works from PS7.1 as far as I can tell:
+Function cc {
+    (pwd).Path | Set-Clipboard
+}
+
+Function pp {
+    Get-Clipboard | cd
+}
+
 Function ddg {
     $arg = $args | Join-String -Separator "+"
     firefox "https://duckduckgo.com/?q=$arg"
@@ -65,7 +74,9 @@ Function nvimconfig {
     nvim $NVIMPROFILE
 }
 
-Set-Alias vi nvim
+Function vi {
+    nvim $args
+}
 
 Function LOAD_GIT_MODULE {
     Write-Progress "Loading posh-git"

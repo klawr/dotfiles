@@ -3,11 +3,8 @@ set nocompatible
 
 call plug#begin("~/.vim/plugged")
 Plug 'rakr/vim-one'
-Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'preservim/nerdcommenter'
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
 Plug 'frazrepo/vim-rainbow'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -16,30 +13,15 @@ let g:coc_global_extensions = [
             \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',
             \ 'coc-powershell', 'coc-vimtex'
             \ ]
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'dense-analysis/ale'
-Plug 'jiangmiao/auto-pairs'
-Plug 'lervag/vimtex'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 call plug#end()
 
-" Plugin Configs:
-
-let g:airline#extensions#tabline#enabled = 1
-
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_powerline_fonts = 1
-let airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-let g:airline#extensions#tabline#show_splits = 1
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-
+" ************************************************************
+" End at line 150
 " Coc configs edited from https://github.com/neoclide/coc.nvim
+"
+" ************************************************************
+
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -135,11 +117,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 " Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
@@ -164,28 +141,15 @@ nnoremap <F2> <Plug>(coc-rename)
 inoremap <F2> <Esc><Plug>(coc-rename)a
 
 " Hide mode, because lightline already does it
-set noshowmode
+" set noshowmode
 " Set minimum height windows to 0
 set wmh=0
 
-let g:tex_flavor = 'latex'
-
-let g:rainbow_active = 1
-" NERDTree
-let g:NERDTreeShowHidden = 1
-let NERDTreeDirArrows = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusline = ''
-let g:NERDTreeDirArrowExpandable = '' "'▸'
-let g:NERDTreeDirArrowCollapsible = '' "'▾'
-
-
-function! ToggleNERD()
-    NERDTreeToggle
-    " Keep the focus on active window
-    wincmd p
-endfunction
+" ****************************************************************
+"
+" COC config end
+"
+" ****************************************************************
 
 " For colorscheme
 if (has("termguicolors"))
@@ -240,14 +204,13 @@ nnoremap <Leader><Esc> :noh<CR>
 nnoremap <Leader>v viw
 
 " FuzzyFinder
-nnoremap <C-p> :FZF<CR>
+"nnoremap <C-p> :FZF<CR>
 " fuzzy search that respects .gitignore
 " If in git directory, show only files that are committed, staged, or unstaged
 " else use regular :Files
-nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
+"nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
 
 " NERDTree
-nnoremap <silent> <C-b> :call ToggleNERD()<CR>
 
 " Open and source init.vim:
 :nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
@@ -359,9 +322,6 @@ vnoremap <RightMouse> y
 nnoremap <RightMouse> p
 inoremap <RightMouse> <Esc>:normal p<CR>a
 
-" Always open help in new tab
-:cabbrev help tab help
-:cabbrev git Git
 " Settings:
 set mouse=a
 set number      " Show Linenumbers
@@ -375,45 +335,10 @@ set smarttab
 set softtabstop=4
 set expandtab
 set linebreak
-set showtabline=2 " Always show tabline
+set showtabline=2 " 0 Always show tabline
 
 syntax enable
-if exists("g:loaded_webdevicons")
-    call webdevicons#refresh()
 
-    fu NERDTreeCustomExplorer(node)
-        exe ":!explorer ".a:node.path.str()
-        silent "<CR>"
-    endfu
-    call NERDTreeAddKeyMap({
-                \ 'key': 'g',
-                \ 'scope': 'Node',
-                \ 'override': 1,
-                \ 'callback': "NERDTreeCustomExplorer",
-                \ 'quickhelpText': 'open explorer on node' })
-
-    call NERDTreeAddKeyMap({
-                \ 'key': 'h',
-                \ 'scope': 'Node',
-                \ 'override': 1,
-                \ 'callback': "NERDTreeMapOpenSplit",
-                \ 'quickhelpText': 'open explorer on node' })
-    " Used to overwrite...
-    fu NERDTreeCustomUp(...)
-        normal! k
-    endfu
-    call NERDTreeAddKeyMap({
-                \ 'key': 'i',
-                \ 'override': 1,
-                \ 'callback': 'NERDTreeCustomUp'
-                \ })
-    call NERDTreeAddKeyMap({
-                \ 'key': 'i',
-                \'override': 1,
-                \'scope': 'FileNode',
-                \'callback': 'NERDTreeCustomUp'
-                \ })
-endif
 " https://stackoverflow.com/questions/94382/vim-with-powershell
 if has("win32")
     set shell=cmd.exe
