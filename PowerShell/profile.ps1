@@ -60,6 +60,8 @@ Function nvimconfig {
     nvim $NVIMPROFILE
 }
 
+Set-Alias vi nvim
+
 Function LOAD_GIT_MODULE {
     Write-Progress "Loading posh-git"
     Import-Module "$PROFILEPATH\Modules\posh-git\1.0.0\posh-git.psd1"
@@ -87,3 +89,9 @@ Function BUILD {
         Write-Host "Type DEV to get there..." -ForegroundColor Red
     }
 }
+
+#region conda initialize
+# !! Contents within this block are managed by 'conda init' !!
+(& "C:\ProgramData\Miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
+#endregion
+

@@ -222,7 +222,7 @@ augroup autocommands
     " Start terminal in insert mode
     autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
     " ...
-    autocmd VimEnter * call ToggleNERD()
+    " autocmd VimEnter * call ToggleNERD()
     " Automatically close if NERDTree is only thing left open
     " autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
