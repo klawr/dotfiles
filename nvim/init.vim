@@ -13,7 +13,8 @@ let g:coc_global_extensions = [
             \ 'coc-powershell', 'coc-vimtex'
             \ ]
 Plug 'mg979/vim-visual-multi', {'branch': 'master'},
-Plug 'https://github.com/airblade/vim-gitgutter.git'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " ************************************************************
