@@ -3,6 +3,7 @@ set nocompatible
 
 call plug#begin("~/.vim/plugged")
 Plug 'rakr/vim-one'
+Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdcommenter'
 "Plug 'sheerun/vim-polyglot'
 Plug 'frazrepo/vim-rainbow'
@@ -61,7 +62,6 @@ function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
 " Use <c-space> to trigger completion.
 if has('nvim')
     inoremap <silent><expr><c-space> <Esc>coc#refresh()a
@@ -156,7 +156,8 @@ if (has("termguicolors"))
     set termguicolors
 endif
 syntax enable
-colorscheme one
+"colorscheme one
+colorscheme gruvbox
 set background=dark
 
 " Fuzzyfinder
@@ -285,8 +286,12 @@ tnoremap <A-l> <C-\><C-n><C-w>l
 nnoremap <A-l> <C-w>l
 
 " Next and previous tab
-nnoremap <C-j> gT
-nnoremap <C-l> gt
+nnoremap <C-J> gT
+nnoremap <C-L> gt
+
+" Next and previous buffer
+nnoremap <C-j> :bp<CR>
+nnoremap <C-l> :bn<CR>
 
 nnoremap <Leader>b :ls<CR>
 

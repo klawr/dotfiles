@@ -19,8 +19,16 @@ Function cc {
     (pwd).Path | Set-Clipboard
 }
 
+Function .. {
+    cd ..
+}
+
 Function pp {
     Get-Clipboard | cd
+}
+
+Function vim_cheatsheet {
+    nvim $HOME/devel/dotfiles/docs/vim_cheatsheet.md
 }
 
 Function ddg {
