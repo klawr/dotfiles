@@ -1,4 +1,11 @@
-language en
+
+" Index - use gg# to go to line #
+" 005 - Plugins
+" 025 - Coc Config
+" 160 - Configs (Colortheme. autocommands"
+" 202 - Hotkeys
+" 322 - Variables and flag
+"
 set nocompatible
 
 if !exists('g:vscode')
@@ -196,7 +203,8 @@ endif
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 nnoremap - <Nop>
-let maplocalleader = "-"
+" let maplocalleader = "-"
+nnoremap - /
 
 nnoremap <Leader><Esc> :noh<CR>
 nnoremap <Leader>v viw
@@ -213,6 +221,14 @@ nnoremap <C-n> :call OpenTerminal()<CR>
 " Turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
 " Escape with jj in insert mode
+" THIS DOES NOT WORK IN VSCODE-NEOVIM.
+" ADD THIS TO keybindings.json:
+" {
+"   "command": "vscode-neovim.compositeEscape1",
+"   "key": "j",
+"   "when": "neovim.mode == insert && editorTextFocus",
+"   "args": "j"
+" }
 inoremap jj <Esc>
 " Jump to marks using ,
 nnoremap , `
@@ -314,21 +330,23 @@ nnoremap <RightMouse> p
 inoremap <RightMouse> <Esc>:normal p<CR>a
 
 " Settings:
-set mouse=a
-set number      " Show Linenumbers
-set showmatch   " Show matching closing bracket
-set spell       " Spellchecking
+if !exists('g:vscode')
+    set mouse=a
+    set number      " Show Linenumbers
+    set showmatch   " Show matching closing bracket
+    set spell       " Spellchecking
 
-set autoindent
-set shiftwidth=4
-set smartindent
-set smarttab
-set softtabstop=4
-set expandtab
-set linebreak
-set showtabline=2 " 0 Always show tabline
+    set autoindent
+    set shiftwidth=4
+    set smartindent
+    set smarttab
+    set softtabstop=4
+    set expandtab
+    set linebreak
+    set showtabline=2 " 0 Always show tabline
 
-syntax enable
+    syntax enable
+endif
 
 " https://stackoverflow.com/questions/94382/vim-with-powershell
 if has("win32")
