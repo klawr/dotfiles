@@ -70,6 +70,10 @@ Function CLEANTEMP {
     Remove-Item -Recurse -Force -ErrorAction Ignore $env:TEMP
 }
 
+Function lsd {
+    ls | Select-Object -ExpandProperty Name | Join-String -Separator " "
+}
+
 Function DEV {
     $path = "$HOME\devel"
 
