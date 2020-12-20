@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1,user-scalable=no">
 <meta name="description" content="My personal cheatsheet for my (n)vim setup">
-<meta name="date" content="Thu Nov 05 2020 01:00:00 GMT+0100 (Central European Standard Time)">
+<meta name="date" content="Thu Nov 05 2020 01:00:00 GMT+0100 (Mitteleuropäische Normalzeit)">
 <meta name="keywords" content="vim,nvim,cheatsheet">
 <base href="./undefined">
 <title>vim_cheatsheet</title>
@@ -135,7 +135,7 @@
 <td style="text-align:right"><code>cc</code> or <code>S</code>, <code>C</code> or <code>c$</code></td>
 </tr>
 <tr>
-<td style="text-align:left">Replace { enire, up to end of } word</td>
+<td style="text-align:left">Replace { entire, up to end of } word</td>
 <td style="text-align:right"><code>ciw</code>, <code>cw</code></td>
 </tr>
 <tr>
@@ -433,88 +433,30 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><h2>Custom</h2></th>
+<th style="text-align:left"><h2>Windows terminal</h2></th>
 <th style="text-align:right"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Toggle <em>NERDTree</em></td>
-<td style="text-align:right"><code>&lt;C-b&gt;</code></td>
+<td style="text-align:left">Open new tab using profile <em>n</em></td>
+<td style="text-align:right"><code>&lt;C-S-*n*&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>:noh</strong> (Remove hightlights; e.g. from search)</td>
-<td style="text-align:right"><code>&lt;Leader&gt;&lt;Esc&gt;</code></td>
+<td style="text-align:left">Close tab</td>
+<td style="text-align:right"><code>&lt;C-S-w&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left">Open FuzzyFinder</td>
-<td style="text-align:right"><code>&lt;C-p&gt;</code></td>
+<td style="text-align:left">{Next, Previous} tab</td>
+<td style="text-align:right"><code>&lt;C-Tab&gt;</code>, <code>&lt;C-S-Tab&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left">Remove whitespaces and reindent file</td>
-<td style="text-align:right"><code>mz:%s/\s\+$//e&lt;CR&gt;gg=G&lt;CR&gt;`zzz:noh&lt;CR&gt;</code> → <code>&lt;A-F&gt;</code></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><h2>NERDTree</h2></th>
-<th style="text-align:right"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Open file in { prev window, split, vsplit, new tab + silent }</td>
-<td style="text-align:right"><code>&lt;cr&gt;</code> or <code>o</code>, <code>i</code>, <code>s</code>, <code>t</code> + <code>T</code></td>
+<td style="text-align:left">Scroll {up, down}</td>
+<td style="text-align:right"><code>&lt;C-S-Up&gt;</code>, <C-S-Down>`</td>
 </tr>
 <tr>
-<td style="text-align:left">Open file in preview { prev window, split, vsplit }</td>
-<td style="text-align:right"><code>go</code>, <code>gi</code>, <code>gs</code></td>
-</tr>
-<tr>
-<td style="text-align:left">{Recursevly Open, Open or Close, explore} directory</td>
-<td style="text-align:right"><code>O</code>, <code>o</code>, <code>e</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Close {parent, all children recursively}</td>
-<td style="text-align:right"><code>x</code>, <code>X</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Change tree root to directory</td>
-<td style="text-align:right"><code>C</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Move tree root up a dir {, but leave old root open}</td>
-<td style="text-align:right"><code>u</code>, <code>U</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Refresh {selected dir, current root}</td>
-<td style="text-align:right"><code>r</code>, <code>R</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Show menu</td>
-<td style="text-align:right"><code>m</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Change <strong>CWD</strong> to { selected dir, tree root }</td>
-<td style="text-align:right"><code>cd</code>, <code>CD</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Go to { parent, root}</td>
-<td style="text-align:right"><code>p</code>, <code>P</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Go to {first, last} child</td>
-<td style="text-align:right"><s><code>K</code></s>, <s><code>J</code></s> → <code>I</code>, <code>K</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Go to {previous, next} sibling</td>
-<td style="text-align:right"><s><code>&lt;C-k&gt;</code></s>, <s><code>&lt;C-J&gt;</code></s> → <code>&lt;C-i&gt;</code>, <code>&lt;C-k&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Toggle { hidden files, file filters, files, bookmarks, maximize, help }</td>
-<td style="text-align:right"><s><code>I</code></s> → <code>H</code>, <code>f</code>, <code>F</code>, <code>B</code>, <code>A</code>, <code>?</code></td>
+<td style="text-align:left">Split {vertically, horizontally}</td>
+<td style="text-align:right"><code>&lt;C-S-+&gt;</code>, <code>&lt;C-S--&gt;</code></td>
 </tr>
 </tbody>
 </table>
@@ -524,7 +466,6 @@
 <h3 id="todo">TODO:</h3>
 <ul>
 <li>Check folds</li>
-<li>Fuzzyfind hotkeys</li>
 <li>Coc Hotkeys</li>
 </ul>
 

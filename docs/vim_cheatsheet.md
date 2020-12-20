@@ -38,7 +38,7 @@ Replace single character | **r**
 Join line below with current line { with, without } space | `J`, `gJ`
 { Lower-, Upper-, switch } case up to next movement | `g~`, `gu`, `gU`
 Replace { entire, up to end of } line | `cc` or `S`, `C` or `c$`
-Replace { enire, up to end of } word | `ciw`, `cw`
+Replace { entire, up to end of } word | `ciw`, `cw`
 Shift text { left, right } | `<<`, `>>`
 { Copy, Delete } **n** lines (default is 0) | **n**`yy`, **n**`dd`
 { Copy, Delete } to end of + { word, line } | `yw`, `dw`, `y$`, `d$` or `D`
@@ -115,28 +115,13 @@ Jump to tag under cursor | `<C-]>`
 Search **abc** using regex magic | `\v`**abc**
 Open help for word under cursor | `K`
 
-| <h2>Custom</h2> |  |
+| <h2>Windows terminal</h2> |  |
 | :-- | --: |
-| Toggle *NERDTree* | `<C-b>`
-| **:noh** (Remove hightlights; e.g. from search) | `<Leader><Esc>`
-| Open FuzzyFinder | `<C-p>`
-| Remove whitespaces and reindent file | ```mz:%s/\s\+$//e<CR>gg=G<CR>`zzz:noh<CR>``` &rarr; `<A-F>`
-
-| <h2>NERDTree</h2> |  |
-| :-- | --: |
-Open file in { prev window, split, vsplit, new tab + silent } | `<cr>` or `o`, `i`, `s`, `t` + `T`
-Open file in preview { prev window, split, vsplit } | `go`, `gi`, `gs`
-{Recursevly Open, Open or Close, explore} directory | `O`, `o`, `e`
-Close {parent, all children recursively} | `x`, `X`
-Change tree root to directory | `C`
-Move tree root up a dir {, but leave old root open} | `u`, `U`
-Refresh {selected dir, current root} | `r`, `R`
-Show menu | `m`
-Change **CWD** to { selected dir, tree root } | `cd`, `CD`
-Go to { parent, root}  | `p`, `P`
-Go to {first, last} child | ~~`K`~~, ~~`J`~~ &rarr; `I`, `K`
-Go to {previous, next} sibling | ~~`<C-k>`~~, ~~`<C-J>`~~ &rarr; `<C-i>`, `<C-k>`
-Toggle { hidden files, file filters, files, bookmarks, maximize, help } | ~~`I`~~ &rarr; `H`, `f`, `F`, `B`, `A`, `?`
+Open new tab using profile *n* | `<C-S-*n*>`
+Close tab | `<C-S-w>`
+{Next, Previous} tab | `<C-Tab>`, `<C-S-Tab>`
+Scroll {up, down} | `<C-S-Up>`, <C-S-Down>`
+Split {vertically, horizontally} | `<C-S-+>`, `<C-S-->`
 
 <p>* See custom commands <br>
 ** Registers are set to system registers (set clipboard = unnamed)</p>
@@ -144,5 +129,4 @@ Toggle { hidden files, file filters, files, bookmarks, maximize, help } | ~~`I`~
 ---
 ### TODO:
 - Check folds
-- Fuzzyfind hotkeys
 - Coc Hotkeys
