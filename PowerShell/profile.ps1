@@ -44,17 +44,8 @@ foreach ($path in $paths) {
     }
 }
 
-# Only works from PS7.1 as far as I can tell:
-Function cc {
-    (pwd).Path | Set-Clipboard
-}
-
 Function .. {
     cd ..
-}
-
-Function pp {
-    Get-Clipboard | cd
 }
 
 Function vim_cheatsheet {
