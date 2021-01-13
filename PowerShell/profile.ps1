@@ -55,7 +55,7 @@ Function vim_cheatsheet {
 
 Function ddg {
     $arg = $args | Join-String -Separator "+"
-    firefox "https://duckduckgo.com/?q=$arg"
+    msedge "https://duckduckgo.com/?q=$arg"
 }
 
 Function CLEANTEMP {
