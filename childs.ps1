@@ -28,6 +28,6 @@ elseif ($args[0] -eq "push") {
     }
 }
 else {
-    Write-Warning "arguments are get and push" -ForegroundColor Yellow
+    Write-Warning "arguments are get and push"
 }
 
