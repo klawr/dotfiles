@@ -33,7 +33,7 @@ $paths = @(
     "$env:ProgramData\Miniconda3\Scripts\conda.exe"
     "$env:ProgramFiles\Mozilla Firefox\firefox.exe"
     "$env:OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe"
-    "$env:ProgramFiles (x86)\Microsoft\Edge\Application\msedge.exe"
+    "$env:LocalAppData\Microsoft\Edge SxS\Application\msedge.exe"
 )
 
 foreach ($path in $paths) {
