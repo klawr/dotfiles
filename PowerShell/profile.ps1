@@ -1,33 +1,33 @@
 
-/*function global:prompt {*/
-    /*$Drive = $pwd.Drive.Name*/
-    /*$Pwds = $pwd -split "\\" | Where-Object { -Not [String]::IsNullOrEmpty($_) }*/
-    /*$PwdPath = if ($Pwds.Count -gt 3) {*/
-        /*$ParentFolder = Split-Path -Path (Split-Path -Path $pwd -Parent) -Leaf*/
-        /*$CurrentFolder = Split-Path -Path $pwd -Leaf*/
-        /*"..\$ParentFolder\$CurrentFolder"*/
-    /*}*/
-    /*elseif ($Pwds.Count -eq 3) {*/
-        /*$ParentFolder = Split-Path -Path (Split-Path -Path $pwd -Parent) -Leaf*/
-        /*$CurrentFolder = Split-Path -Path $pwd -Leaf*/
-        /*"$ParentFolder\$CurrentFolder"*/
-    /*}*/
-    /*elseif ($Pwds.Count -eq 2) {*/
-        /*Split-Path -Path $pwd -Leaf*/
-    /*}*/
-    /*else { "" }*/
+# function global:prompt {
+#     $Drive = $pwd.Drive.Name
+#     $Pwds = $pwd -split "\\" | Where-Object { -Not [String]::IsNullOrEmpty($_) }
+#     $PwdPath = if ($Pwds.Count -gt 3) {
+#         $ParentFolder = Split-Path -Path (Split-Path -Path $pwd -Parent) -Leaf
+#         $CurrentFolder = Split-Path -Path $pwd -Leaf
+#         "..\$ParentFolder\$CurrentFolder"
+#     }
+#     elseif ($Pwds.Count -eq 3) {
+#         /*$ParentFolder = Split-Path -Path (Split-Path -Path $pwd -Parent) -Leaf
+#         /*$CurrentFolder = Split-Path -Path $pwd -Leaf
+#         /*"$ParentFolder\$CurrentFolder"
+#     }
+#     elseif ($Pwds.Count -eq 2) {
+#         /*Split-Path -Path $pwd -Leaf
+#     }
+#     else { "" }
  
-    /*$Path = "$Drive`:\$PwdPath"*/
-    /*$IsAdmin = (New-Object Security.Principal.WindowsPrincipal ([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)*/
-    /*if ($IsAdmin) {          */
-        /*Write-Host -Object $Path -NoNewline -ForegroundColor DarkRed*/
-    /*}*/
-    /*else {*/
-        /*Write-Host -Object $Path -NoNewline -ForegroundColor DarkGray*/
-    /*}*/
+#     $Path = "$Drive`:\$PwdPath"
+#     $IsAdmin = (New-Object Security.Principal.WindowsPrincipal ([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+#     if ($IsAdmin) {          
+#         Write-Host -Object $Path -NoNewline -ForegroundColor DarkRed
+#     }
+#     else {
+#         Write-Host -Object $Path -NoNewline -ForegroundColor DarkGray
+#     }
  
-    /*return "> "*/
-/*}*/
+#     /*return "> "
+# }
 
 $paths = @(
     "$env:ProgramData\Miniconda3\Scripts\conda.exe"
