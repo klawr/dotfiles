@@ -1,19 +1,19 @@
-# Replace everything prepended with My:
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.18)
 
-project(
-    MyProjectName
-    VERSION 0.1
-    LANGUAGES CXX)
+project(hello_tf LANGUAGES CXX)
 
-# Add imported library
-add_library(MyLibraryName SHARED IMPORTED)
-target_include_directories(MyLibraryName INTERFACE include)
-set_target_properties(MyLibraryName PROPERTIES
-    IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/lib/MyLibraryName.dll
-    IMPORTED_IMPLIB ${CMAKE_CURRENT_SOURCE_DIR}/lib/MyLibraryName.lib
-)
+find_package(frugally-deep CONFIG REQUIRED)
 
-# Add executable
-add_executable(MyProjectName src/MyProjectName.cpp)
-target_link_libraries(MyProjectName PUBLIC MyLibraryName)
+add_executable(hello_tf src/hello_tf.cpp)
+target_link_libraries(hello_tf PUBLIC frugally-deep)
+
+# Forgetable snippets:
+
+# if (WIN32)
+# 	target_compile_definitions(hello_tf
+#		PUBLIC
+#		VC_EXTRALEAN=1
+#		WIN32_LEAN_AND_MEAN=1
+#		NOMINMAX=1
+#	)
+# endif()
