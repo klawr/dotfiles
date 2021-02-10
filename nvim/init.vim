@@ -10,11 +10,11 @@ set nocompatible
 
 if !exists('g:vscode')
     call plug#begin("~/.vim/plugged")
-    Plug 'rakr/vim-one'
+    "Plug 'rakr/vim-one'
     Plug 'morhetz/gruvbox'
     Plug 'preservim/nerdcommenter'
     "Plug 'sheerun/vim-polyglot'
-    Plug 'frazrepo/vim-rainbow'
+    "Plug 'frazrepo/vim-rainbow'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = [
                 \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',
@@ -23,6 +23,7 @@ if !exists('g:vscode')
     Plug 'mg979/vim-visual-multi', {'branch': 'master'},
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
+    Plug 'lervag/vimtex'
     call plug#end()
 
     " ************************************************************
@@ -159,15 +160,9 @@ if !exists('g:vscode')
     "
     " ****************************************************************
 
-    " For colorscheme
-    if (has("termguicolors"))
-        set termguicolors
-    endif
+    let g:tex_flavor = 'latex'
     syntax enable
-    "colorscheme one
     colorscheme gruvbox
-    set background=dark
-
     " ...
     function! OpenTerminal()
         split
@@ -205,6 +200,11 @@ let mapleader = " "
 nnoremap - <Nop>
 " let maplocalleader = "-"
 nnoremap - /
+
+inoremap <C-c> <Nop>
+inoremap <C-v> <Esc>pi
+vnoremap <C-c> y
+vnoremap <C-x> d
 
 nnoremap <Leader><Esc> :noh<CR>
 nnoremap <Leader>v viw
@@ -343,15 +343,15 @@ if !exists('g:vscode')
     set softtabstop=4
     set expandtab
     set linebreak
-    set showtabline=2 " 0 Always show tabline
+    set showtabline=0 " 0 Always show tabline
 
     syntax enable
 endif
 
 " https://stackoverflow.com/questions/94382/vim-with-powershell
-if has("win32")
-    set shell=cmd.exe
-    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NoProfile\ -NonInteractive\ -ExecutionPolicy\ RemoteSigned
-    set shellpipe=|
-    set shellredir=>
-endif
+" if has("win32")
+    " set shell=cmd
+    " set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NoProfile\ -NonInteractive\ -ExecutionPolicy\ RemoteSigned
+    " set shellpipe=|
+    " set shellredir=>
+" endif
