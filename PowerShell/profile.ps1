@@ -8,12 +8,12 @@ function global:prompt {
         "..\$ParentFolder\$CurrentFolder"
     }
     elseif ($Pwds.Count -eq 3) {
-        /*$ParentFolder = Split-Path -Path (Split-Path -Path $pwd -Parent) -Leaf
-        /*$CurrentFolder = Split-Path -Path $pwd -Leaf
-        /*"$ParentFolder\$CurrentFolder"
+        $ParentFolder = Split-Path -Path (Split-Path -Path $pwd -Parent) -Leaf
+        $CurrentFolder = Split-Path -Path $pwd -Leaf
+        "$ParentFolder\$CurrentFolder"
     }
     elseif ($Pwds.Count -eq 2) {
-        /*Split-Path -Path $pwd -Leaf
+        Split-Path -Path $pwd -Leaf
     }
     else { "" }
  
@@ -26,7 +26,7 @@ function global:prompt {
         Write-Host -Object $Path -NoNewline -ForegroundColor DarkGray
     }
  
-    /*return "> "
+    return "> "
 }
 
 $paths = @(
@@ -122,7 +122,7 @@ New-Alias -Name lgit -Value LOAD_GIT_MODULE
 # This command is used for the deepmech project, where certain webpack stuff is not working...
 Set-Variable -Name DEVPATH -Value $HOME\devel\deepmech\gh-pages 
 Function LAZY {
-    Move-Item -Force $DEVPATH\dist\dist\deepmech_bundle.js $DEVPATH\dist\deepmech_bundle.js
+    Get-ChildItem -Path $DEVPATH\dist\dist -Recurse -File | Move-Item -Destination $DEVPATH\dist
     Remove-Item $DEVPATH\dist\dist
 }
 # Figured I repeat this too often in said project:
