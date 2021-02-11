@@ -50,10 +50,6 @@ Function ... { cd ../.. }
 Function .... { cd ../../.. }
 Function ..... { cd ../../../.. }
 
-Function vim_cheatsheet {
-    nvim $HOME/devel/dotfiles/docs/vim_cheatsheet.md
-}
-
 Function ddg {
     $arg = $args | Join-String -Separator "+"
     msedge "https://duckduckgo.com/?q=$arg"
@@ -61,10 +57,6 @@ Function ddg {
 
 Function CLEANTEMP {
     Remove-Item -Recurse -Force -ErrorAction Ignore $env:TEMP
-}
-
-Function lsd {
-    ls | Select-Object -ExpandProperty Name | Join-String -Separator " "
 }
 
 Function DEV {
