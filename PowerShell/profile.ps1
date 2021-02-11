@@ -45,9 +45,10 @@ foreach ($path in $paths) {
     }
 }
 
-Function .. {
-    cd ..
-}
+Function .. { cd .. }
+Function ... { cd ../.. }
+Function .... { cd ../../.. }
+Function ..... { cd ../../../.. }
 
 Function vim_cheatsheet {
     nvim $HOME/devel/dotfiles/docs/vim_cheatsheet.md
@@ -114,7 +115,7 @@ Function vi {
 
 Function LOAD_GIT_MODULE {
     Write-Progress "Loading posh-git"
-    Import-Module "$PROFILEPATH\Modules\posh-git\1.0.0\posh-git.psd1"
+    Import-Module "$PROFILEPATH\Modules\posh-git\0.7.3\posh-git.psd1"
 }
 New-Alias -Name lgit -Value LOAD_GIT_MODULE
 
