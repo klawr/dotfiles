@@ -38,7 +38,7 @@ Replace single character | **r**
 Join line below with current line { with, without } space | `J`, `gJ`
 { Lower-, Upper-, switch } case up to next movement | `g~`, `gu`, `gU`
 Replace { entire, up to end of } line | `cc` or `S`, `C` or `c$`
-Replace { entire, up to end of } word | `ciw`, `cw`
+Replace { entire, up to end of } word | `ciw` &arr; `chw`, `cw`
 Shift text { left, right } | `<<`, `>>`
 { Copy, Delete } **n** lines (default is 0) | **n**`yy`, **n**`dd`
 { Copy, Delete } to end of + { word, line } | `yw`, `dw`, `y$`, `d$` or `D`
