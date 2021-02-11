@@ -6,127 +6,108 @@
 "tags": ["vim", "nvim", "cheatsheet"]
 ---
 
-### nvim cheatsheet
+## nvim cheatsheet
 
-| <h2>Cursor movement</h2> | |
+Commands are generally composed of:
+`verb[specifier][word]`
+
+Not everything is straight forwards. Be creative with my interpretation.
+
+`dhw` = delete inner word where the cursor is right now.
+
+Verbs describe what shall be done. They need a **noun** to work.
+
+| <h2>verbs</h2> |                                  |
+| :------------- | -------------------------------: |
+| d              |                           delete |
+| c              | change (delete and enter insert) |
+| r              |                          replace |
+| p, P           |     paste {before, after} cursor |
+| u              |                             undo |
+| \<C-r\>        |                             redo |
+| \>             |                           indent |
+| v              |                  visually select |
+| y              |                      yank (copy) |
+| gc             |    comment (from vim-commentary) |
+
+| <h2>nouns</h2> |                               |
+| :------------- | ----------------------------: |
+| d              |                        delete |
+| w              | word (forward to end of word) |
+| "              |                             " |
+| t              |                   tags (html) |
+| b              |                      brackets |
+| p              |                     paragraph |
+| \> , <         |            {indent, deindent} |
+| as             | as sentence (untested now...) |
+| m**x**         |                set mark **x** |
+
+Specifiers without a verb are used for movement.
+
+| <h2>specifier</h2>      |                                                              |
+| :---------------------- | -----------------------------------------------------------: |
+| **n**                   | **n** is a number and can prepend a specifier to multiply it |
+| ~~h,j,k,l~~ &rarr; jkil |                                 Move {left, down, up, right} |
+| ~~H~~ &rarr; J, M, L    |                         Move to {top, mid, bottom} of screen |
+| b                       |     back (back by a word, Capitalize to include punctuation) |
+| e, w                    |             to next word (Capitalize to include punctuation) |
+| {, }                    |                           to {previous, next} function block |
+| gg, G                   |                                  to {start, end} of document |
+| ~~i~~ -> h              |                       inner (e.g. dhw for delete inner word) |
+| a                       |                       outer (e.g. daw for delete outer word) |
+| f**x**                  |      up to next x (e.g. cfu for cut to next character **u**) |
+| F**x**                  |                                                 up to last x |
+| t**x*, T*x**            |                        same as f, F, but not including **x** |
+| \`**x**                 |                                             up to mark **x** |
+| s                       |                                                   surround\* |
+| n, N                    |          up to {next, last} occurence (of search using **/** |
+| "**x**                  |              Copy and Pastes in and from register **x**.\*\* |
+
+\* from surround-vim, e.g. cs"' => change surrounding " to '. or: yshw" => surround inner word with "<br>
+\*\* {\*} is the system clipboard. "\*yy will yank the current line into the system clipboard, "\*p will paste the system clipboard.
+
+| <h2>modes</h2>    |                                                                                                                     |
+| :---------------- | ------------------------------------------------------------------------------------------------------------------: |
+| ~~i~~ &rarr; h, a |                                                                            enter insert mode {before, after} cursor |
+| ~~I~~ &rarr; H, A |                                                                                enter insert at {start, end} of line |
+| \<C-h\>, \<C-w\>  |                                                             delete { character, word } before cursor in insert mode |
+| \<C-j\>           |                                                                                             new line in insert mode |
+| \<C-t\>, \<C-d\>  |                                                                                   {indent, deindent} in insert mode |
+| \<C-n\>, \<C-p\>  |                                              navigate through auto-completion in insert mode (is this through coc?) |
+| \<C-r\>**x**      |                                                                        insert content of register **x** (test this) |
+| Remember:         | If you have to use visual mode you are most likely missing out on some stuff. Visual mode does not allow repeating. |
+| v                 |                                                                                                   enter visual mode |
+| o, O              |                                                                              move between {start, end} of selection |
+| aw                |                                                                                                         mark a word |
+
+These are somehow special and I could not put them into the other tables.
+Most of them can be prepended by the **n** specifier where it makes sense.
+| <h2>other</h2> ||
 | :-- | --: |
-Cursor movement { left, down, up, right } |  ~~h~~, ~~j~~, ~~k~~, l &rarr; j, k, i, l
-Move to { top, mid, bottom } of screen | ~~`H`~~ &rarr; `J`, `M`, `L`
-Jump forwards to { start, end } of a word + ignoring punctuation | `w`, `e` + `W`, `E`
-Jump backwards to start of a word + ignoring punctuation | `b`, `B`
-Jump to { start, end } of line | `0`, `$`
-Jump to { first, last } non blank character | `^`, `g_`
-Go to matching character (supported are **()**, **{}**, **[]**; check :h matchpairs) | `%`
-Go to { first, last } line of code | `gg`, `G`
-Go to **n**-th line | **n**`gg` or **n**`G`
-Jump to { next, previous } occurence of character **x** | `f`**x**, `F`**x**
-Jump to { before next, after previous } occurence of character **x** | **t`x`, F`x`**
-Repeat previous **f, t, F, T** command { forwards, backwards } | `;`, `,`
-Jump to { previous, next } function/block | `{`, `}`
-Center cursor on screen | `zz`
-Move cursor { up, down } one line | `<C-y>`, `<C-e>`
-Move { forward, back } one full screen | ~~`<C-f>`~~, ~~`<C-b>`~~ *
-Move { forward, back } one half screen | `<C-d>`, `<C-u>`
-Set current cursor position as position **n** | `m`**n**
-Jump to position **n** | <code>\`</code>**n** &rarr; `,`**n**
-Jump to position before jump | <code>\`\`</code> &rarr; `,,`
-Go to latest change in file | <code>\`.</code> &rarr; `,.`
+o, O | Insert line {under, above} current line (enter insert mode)
+x | delete character
+. | repeat last change
+/ | search forward
+? | search backwards
+,, | jump back
+,. | go to latest change in file
+\<C-w\>T | Move split into own tab
+\<A-**n**\> | Go to tab **n**
+:ls | List buffers
+:b **n** | Go to buffer **n**
+:sp, :hs | Split {vertically, horizontally}
+zz | center cursor on screen
+\<C-d\>, \<C-u\> | Move screen {down, up} half screen
+:**n**s/**abc**/**def** | Replace **n** (**%** for all) occurences of **abc** with **def**
+:**n**s/**abc**/**def**/gc | Same but with confirmation
 
-| <h2>Editing</h2> | |
-| :-- | --: |
-Replace single character | **r**
-Join line below with current line { with, without } space | `J`, `gJ`
-{ Lower-, Upper-, switch } case up to next movement | `g~`, `gu`, `gU`
-Replace { entire, up to end of } line | `cc` or `S`, `C` or `c$`
-Replace { entire, up to end of } word | `ciw` &arr; `chw`, `cw`
-Shift text { left, right } | `<<`, `>>`
-{ Copy, Delete } **n** lines (default is 0) | **n**`yy`, **n**`dd`
-{ Copy, Delete } to end of + { word, line } | `yw`, `dw`, `y$`, `d$` or `D`
-Delete character | `x`
-Paste { before, after } cursor | `p`, `P`
-Reindent buffer (see honorable mentions why this works) | `gg=G`
-{ Undo, Restore last changed line, Redo } | `u`, `U`, `<C-r>`
-Repeat last command | `.`
+<h2>Useful stuff</h2>
 
-| <h2>Insert mode</h2> |  |
-| :-- | --: |
-Enter insert mode { before, after } cursor | ~~`i`~~ &rarr; `h`, `a`
-Enter insert mode at the { beginning, end } of the line | ~~`I`~~ &rarr; `H`, `A`
-Open a new line { below, above } the current line and enter insert mode | `o`, `O`
-Append at end of word and enter insert mode | `ea`
-Delete { character, word } before cursor (during insert mode) | `<C-h>`, `<C-w>`
-New line (during insert mode) | `<C-j>`
-{ Indent, Deindet } (during insert mode) | `<C-t>`, `<C-d>`
-Insert { previous, next } best guess (auto-complete) (during insert mode) | `<C-p>`, `<C-n>`
-~~Insert content of register **x**~~ ** | ~~`<C-r>`**x**~~ **
+|                 | <div style="width:200px"><div>        |                                                                                                                     |
+| :-------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------: |
+| Snippet command | **x** :-1read **path**\<CR\>**move**a |                        use command **x** to read file at **path**,**move** where you wanna be and enter insert mode |
+| Remove buffers  | :bd **x** \<C-a\>                     | Remove all buffers that match **x**. E.g. :bd **node_modules** \<C-a\> to close all buffers open from node_modules. |
 
-| <h2>Visual mode</h2> |  |
-| :-- | --: |
-Start visual mode { normal, linewise, blockmode } | `v`, `V`, `<C-v>`
-Move between { start or end, corners } of selection | `o`, `O`
-Mark a word | `aw`
-Mark between { **()**, **{}**, **<>** } + in { inner ,outer } block | `ib`, `iB`, `it`, `ab`, `aB`, `at`
-{ Lower, upper, switch } case for marked text | `u`, `U`, `~`
-Shift marked text { left, right } | `<`, `>`
-{ Copy (yank), Delete (cut) } marked text | `y`, `d`
-
-| <h2>Layout</h2> | |
-| :-- | --: |
-Move split into own tab | `<C-w>T`
-Move to { previous, next } tab | `gT` &rarr; `<C-j>`, `gt` &rarr; `<C-l>`
-Move to tab number **n** | **n**`gt` or `<A-`**n**`>`
-Move current tab to position **n** | `:tabm` **n**
-Close { current tab, all tabs but current one } | `:tabc`, `:tabo`
-Split window {, vertically} | `<C-w>s`, `<C-w>v`
-Switch windows {, with next one } | `<C-w>w`, `<C-w>x`
-Quit window | `<C-w>q`
-Move cursor to window { left, down, up, right } | ~~`<C-w>h`~~, ~~`<C-w>j`~~, ~~`<C-w>k`~~, ~~`<C-w>l`~~ &rarr; `<C-w>j`, `<C-w>k`, `<C-w>i`, `<C-w>l`
-{ Increase, Decrase } window size + { hor, vert } | `<C-w>>`, `<C-w><` + `<C-w>+`, `<C-w>-`
-
-| <h2>Commands</h2> | |
-| :-- | --: |
-{Write (W), Quit (Q), Force (F) Q, W & Q, Q all (a), F Q a, W & Q a} | `:w`, `:q`, `:q!`, `:wq`, `:qa`, `:qa!`, `:wqa`
-Edit in new buffer | `:e`
-Go to { next, previous } buffer | `:bn`, `:bp`
-Go to buffer **n** (number of filename) | `:b`**n**
-List buffers | ':ls' or ':buffers'
-Delete buffer | `:bd`
-Search { forwards, backwards } **abc** | `/`**abc** or `<C-f>`**abc**, `?`**abc**
-Repeat search in { same, opposite } direction | `n`, `N`
-Replace all **abc** with **def** in buffer + confirmation | `:%s/`**abc**`/`**def**`/g`, `.../`**def**`/gc`
-Open file in new buffer and split window {, vertically} | `:sp`, `:vs`
-Open all buffers as { vertical windows, tabs } | `:vert`, `:tab ba`
-Run command on all { tabs, windows of active tab } | `:tabdo`, `:windo`
-
-| <h2>Honorable mentions</h2> |  |
-| :-- | --: |
-Leave mode | `<Esc>` &rarr; `jj`
-Indent a block with **()** or **{}** (cursor on brace) | `>%`
-{Re-}Indent block with + { **()**, **{}**, **<>** } | `=ib`, `=iB`, `=at` + `>ib`, `>iB`, `>at`
-Paste and adjust indent in current line | `]p`
-Reindent **n** lines | **n**==
-~~{ Copy, paste } into register **n** (x for system clipboard)~~** | `ny`, `np`
-{ Record, Run } macro **n** | `q`**n**, `@`**n**
-Stop recording | `q`
-Rerun last macro | `@@`
-Go to position { where vim was exited, when last editing file, of last change } | <code>\`0</code>, <code>\`"</code>
-Go to { newer, older } position in + { jump, change} list | `<C-i>`, `<C-o>`, `g,`, `g;`
-Jump to tag under cursor | `<C-]>`
-Search **abc** using regex magic | `\v`**abc**
-Open help for word under cursor | `K`
-
-| <h2>Windows terminal</h2> |  |
-| :-- | --: |
-Open new tab using profile *n* | `<C-S-*n*>`
-Close tab | `<C-S-w>`
-{Next, Previous} tab | `<C-Tab>`, `<C-S-Tab>`
-Scroll {up, down} | `<C-S-Up>`, <C-S-Down>`
-Split {vertically, horizontally} | `<C-S-+>`, `<C-S-->`
-
-<p>* See custom commands <br>
-** Registers are set to system registers (set clipboard = unnamed)</p>
-
----
-### TODO:
-- Check folds
-- Coc Hotkeys
+| <h2>removed</h2> |                                    |
+| :--------------- | ---------------------------------: |
+| \<C-f\>, \<C-b\> | Move screen {down, up} half screen |

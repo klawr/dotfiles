@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1,user-scalable=no">
 <meta name="description" content="My personal cheatsheet for my (n)vim setup">
-<meta name="date" content="Thu Nov 05 2020 01:00:00 GMT+0100 (Mitteleuropäische Normalzeit)">
+<meta name="date" content="Thu Nov 05 2020 01:00:00 GMT+0100 (Central European Standard Time)">
 <meta name="keywords" content="vim,nvim,cheatsheet">
 <base href="./undefined">
 <title>vim_cheatsheet</title>
@@ -15,459 +15,351 @@
 <body>
 
 <main>
-<h3 id="nvim-cheatsheet">nvim cheatsheet</h3>
+<h2 id="nvim-cheatsheet">nvim cheatsheet</h2>
+<p>Commands are generally composed of:
+<code>verb[specifier][word]</code></p>
+<p>Not everything is straight forwards. Be creative with my interpretation.</p>
+<p><code>dhw</code> = delete inner word where the cursor is right now.</p>
+<p>Verbs describe what shall be done. They need a <strong>noun</strong> to work.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><h2>Cursor movement</h2></th>
+<th style="text-align:left"><h2>verbs</h2></th>
 <th style="text-align:right"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Cursor movement { left, down, up, right }</td>
-<td style="text-align:right"><s>h</s>, <s>j</s>, <s>k</s>, l → j, k, i, l</td>
+<td style="text-align:left">d</td>
+<td style="text-align:right">delete</td>
 </tr>
 <tr>
-<td style="text-align:left">Move to { top, mid, bottom } of screen</td>
-<td style="text-align:right"><s><code>H</code></s> → <code>J</code>, <code>M</code>, <code>L</code></td>
+<td style="text-align:left">c</td>
+<td style="text-align:right">change (delete and enter insert)</td>
 </tr>
 <tr>
-<td style="text-align:left">Jump forwards to { start, end } of a word + ignoring punctuation</td>
-<td style="text-align:right"><code>w</code>, <code>e</code> + <code>W</code>, <code>E</code></td>
+<td style="text-align:left">r</td>
+<td style="text-align:right">replace</td>
 </tr>
 <tr>
-<td style="text-align:left">Jump backwards to start of a word + ignoring punctuation</td>
-<td style="text-align:right"><code>b</code>, <code>B</code></td>
+<td style="text-align:left">p, P</td>
+<td style="text-align:right">paste {before, after} cursor</td>
 </tr>
 <tr>
-<td style="text-align:left">Jump to { start, end } of line</td>
-<td style="text-align:right"><code>0</code>, <code>$</code></td>
+<td style="text-align:left">u</td>
+<td style="text-align:right">undo</td>
 </tr>
 <tr>
-<td style="text-align:left">Jump to { first, last } non blank character</td>
-<td style="text-align:right"><code>^</code>, <code>g_</code></td>
+<td style="text-align:left">&lt;C-r&gt;</td>
+<td style="text-align:right">redo</td>
 </tr>
 <tr>
-<td style="text-align:left">Go to matching character (supported are <strong>()</strong>, <strong>{}</strong>, <strong>[]</strong>; check :h matchpairs)</td>
-<td style="text-align:right"><code>%</code></td>
+<td style="text-align:left">&gt;</td>
+<td style="text-align:right">indent</td>
 </tr>
 <tr>
-<td style="text-align:left">Go to { first, last } line of code</td>
-<td style="text-align:right"><code>gg</code>, <code>G</code></td>
+<td style="text-align:left">v</td>
+<td style="text-align:right">visually select</td>
 </tr>
 <tr>
-<td style="text-align:left">Go to <strong>n</strong>-th line</td>
-<td style="text-align:right"><strong>n</strong><code>gg</code> or <strong>n</strong><code>G</code></td>
+<td style="text-align:left">y</td>
+<td style="text-align:right">yank (copy)</td>
 </tr>
 <tr>
-<td style="text-align:left">Jump to { next, previous } occurence of character <strong>x</strong></td>
-<td style="text-align:right"><code>f</code><strong>x</strong>, <code>F</code><strong>x</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">Jump to { before next, after previous } occurence of character <strong>x</strong></td>
-<td style="text-align:right"><strong>t<code>x</code>, F<code>x</code></strong></td>
-</tr>
-<tr>
-<td style="text-align:left">Repeat previous <strong>f, t, F, T</strong> command { forwards, backwards }</td>
-<td style="text-align:right"><code>;</code>, <code>,</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Jump to { previous, next } function/block</td>
-<td style="text-align:right"><code>{</code>, <code>}</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Center cursor on screen</td>
-<td style="text-align:right"><code>zz</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Move cursor { up, down } one line</td>
-<td style="text-align:right"><code>&lt;C-y&gt;</code>, <code>&lt;C-e&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Move { forward, back } one full screen</td>
-<td style="text-align:right"><s><code>&lt;C-f&gt;</code></s>, <s><code>&lt;C-b&gt;</code></s> *</td>
-</tr>
-<tr>
-<td style="text-align:left">Move { forward, back } one half screen</td>
-<td style="text-align:right"><code>&lt;C-d&gt;</code>, <code>&lt;C-u&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Set current cursor position as position <strong>n</strong></td>
-<td style="text-align:right"><code>m</code><strong>n</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">Jump to position <strong>n</strong></td>
-<td style="text-align:right"><code>`</code><strong>n</strong> → <code>,</code><strong>n</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">Jump to position before jump</td>
-<td style="text-align:right"><code>``</code> → <code>,,</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Go to latest change in file</td>
-<td style="text-align:right"><code>`.</code> → <code>,.</code></td>
+<td style="text-align:left">gc</td>
+<td style="text-align:right">comment (from vim-commentary)</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><h2>Editing</h2></th>
+<th style="text-align:left"><h2>nouns</h2></th>
 <th style="text-align:right"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Replace single character</td>
-<td style="text-align:right"><strong>r</strong></td>
+<td style="text-align:left">d</td>
+<td style="text-align:right">delete</td>
 </tr>
 <tr>
-<td style="text-align:left">Join line below with current line { with, without } space</td>
-<td style="text-align:right"><code>J</code>, <code>gJ</code></td>
+<td style="text-align:left">w</td>
+<td style="text-align:right">word (forward to end of word)</td>
 </tr>
 <tr>
-<td style="text-align:left">{ Lower-, Upper-, switch } case up to next movement</td>
-<td style="text-align:right"><code>g~</code>, <code>gu</code>, <code>gU</code></td>
+<td style="text-align:left">&quot;</td>
+<td style="text-align:right">&quot;</td>
 </tr>
 <tr>
-<td style="text-align:left">Replace { entire, up to end of } line</td>
-<td style="text-align:right"><code>cc</code> or <code>S</code>, <code>C</code> or <code>c$</code></td>
+<td style="text-align:left">t</td>
+<td style="text-align:right">tags (html)</td>
 </tr>
 <tr>
-<td style="text-align:left">Replace { entire, up to end of } word</td>
-<td style="text-align:right"><code>ciw</code>, <code>cw</code></td>
+<td style="text-align:left">b</td>
+<td style="text-align:right">brackets</td>
 </tr>
 <tr>
-<td style="text-align:left">Shift text { left, right }</td>
-<td style="text-align:right"><code>&lt;&lt;</code>, <code>&gt;&gt;</code></td>
+<td style="text-align:left">p</td>
+<td style="text-align:right">paragraph</td>
 </tr>
 <tr>
-<td style="text-align:left">{ Copy, Delete } <strong>n</strong> lines (default is 0)</td>
-<td style="text-align:right"><strong>n</strong><code>yy</code>, <strong>n</strong><code>dd</code></td>
+<td style="text-align:left">&gt; , &lt;</td>
+<td style="text-align:right">{indent, deindent}</td>
 </tr>
 <tr>
-<td style="text-align:left">{ Copy, Delete } to end of + { word, line }</td>
-<td style="text-align:right"><code>yw</code>, <code>dw</code>, <code>y$</code>, <code>d$</code> or <code>D</code></td>
+<td style="text-align:left">as</td>
+<td style="text-align:right">as sentence (untested now...)</td>
 </tr>
 <tr>
-<td style="text-align:left">Delete character</td>
-<td style="text-align:right"><code>x</code></td>
+<td style="text-align:left">m<strong>x</strong></td>
+<td style="text-align:right">set mark <strong>x</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Specifiers without a verb are used for movement.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><h2>specifier</h2></th>
+<th style="text-align:right"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>n</strong></td>
+<td style="text-align:right"><strong>n</strong> is a number and can prepend a specifier to multiply it</td>
 </tr>
 <tr>
-<td style="text-align:left">Paste { before, after } cursor</td>
-<td style="text-align:right"><code>p</code>, <code>P</code></td>
+<td style="text-align:left"><s>h,j,k,l</s> → jkil</td>
+<td style="text-align:right">Move {left, down, up, right}</td>
 </tr>
 <tr>
-<td style="text-align:left">Reindent buffer (see honorable mentions why this works)</td>
-<td style="text-align:right"><code>gg=G</code></td>
+<td style="text-align:left"><s>H</s> → J, M, L</td>
+<td style="text-align:right">Move to {top, mid, bottom} of screen</td>
 </tr>
 <tr>
-<td style="text-align:left">{ Undo, Restore last changed line, Redo }</td>
-<td style="text-align:right"><code>u</code>, <code>U</code>, <code>&lt;C-r&gt;</code></td>
+<td style="text-align:left">b</td>
+<td style="text-align:right">back (back by a word, Capitalize to include punctuation)</td>
 </tr>
 <tr>
-<td style="text-align:left">Repeat last command</td>
-<td style="text-align:right"><code>.</code></td>
+<td style="text-align:left">e, w</td>
+<td style="text-align:right">to next word (Capitalize to include punctuation)</td>
+</tr>
+<tr>
+<td style="text-align:left">{, }</td>
+<td style="text-align:right">to {previous, next} function block</td>
+</tr>
+<tr>
+<td style="text-align:left">gg, G</td>
+<td style="text-align:right">to {start, end} of document</td>
+</tr>
+<tr>
+<td style="text-align:left"><s>i</s> -&gt; h</td>
+<td style="text-align:right">inner (e.g. dhw for delete inner word)</td>
+</tr>
+<tr>
+<td style="text-align:left">a</td>
+<td style="text-align:right">outer (e.g. daw for delete outer word)</td>
+</tr>
+<tr>
+<td style="text-align:left">f<strong>x</strong></td>
+<td style="text-align:right">up to next x (e.g. cfu for cut to next character <strong>u</strong>)</td>
+</tr>
+<tr>
+<td style="text-align:left">F<strong>x</strong></td>
+<td style="text-align:right">up to last x</td>
+</tr>
+<tr>
+<td style="text-align:left">t<strong>x*, T*x</strong></td>
+<td style="text-align:right">same as f, F, but not including <strong>x</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">`<strong>x</strong></td>
+<td style="text-align:right">up to mark <strong>x</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">s</td>
+<td style="text-align:right">surround*</td>
+</tr>
+<tr>
+<td style="text-align:left">n, N</td>
+<td style="text-align:right">up to {next, last} occurence (of search using <strong>/</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">&quot;<strong>x</strong></td>
+<td style="text-align:right">Copy and Pastes in and from register <strong>x</strong>.**</td>
+</tr>
+</tbody>
+</table>
+<p>* from surround-vim, e.g. cs&quot;' =&gt; change surrounding &quot; to '. or: yshw&quot; =&gt; surround inner word with &quot;<br>
+** {*} is the system clipboard. &quot;*yy will yank the current line into the system clipboard, &quot;*p will paste the system clipboard.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><h2>modes</h2></th>
+<th style="text-align:right"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><s>i</s> → h, a</td>
+<td style="text-align:right">enter insert mode {before, after} cursor</td>
+</tr>
+<tr>
+<td style="text-align:left"><s>I</s> → H, A</td>
+<td style="text-align:right">enter insert at {start, end} of line</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;C-h&gt;, &lt;C-w&gt;</td>
+<td style="text-align:right">delete { character, word } before cursor in insert mode</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;C-j&gt;</td>
+<td style="text-align:right">new line in insert mode</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;C-t&gt;, &lt;C-d&gt;</td>
+<td style="text-align:right">{indent, deindent} in insert mode</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;C-n&gt;, &lt;C-p&gt;</td>
+<td style="text-align:right">navigate through auto-completion in insert mode (is this through coc?)</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;C-r&gt;<strong>x</strong></td>
+<td style="text-align:right">insert content of register <strong>x</strong> (test this)</td>
+</tr>
+<tr>
+<td style="text-align:left">Remember:</td>
+<td style="text-align:right">If you have to use visual mode you are most likely missing out on some stuff. Visual mode does not allow repeating.</td>
+</tr>
+<tr>
+<td style="text-align:left">v</td>
+<td style="text-align:right">enter visual mode</td>
+</tr>
+<tr>
+<td style="text-align:left">o, O</td>
+<td style="text-align:right">move between {start, end} of selection</td>
+</tr>
+<tr>
+<td style="text-align:left">aw</td>
+<td style="text-align:right">mark a word</td>
+</tr>
+</tbody>
+</table>
+<p>These are somehow special and I could not put them into the other tables.
+Most of them can be prepended by the <strong>n</strong> specifier where it makes sense.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><h2>other</h2></th>
+<th style="text-align:right"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">o, O</td>
+<td style="text-align:right">Insert line {under, above} current line (enter insert mode)</td>
+</tr>
+<tr>
+<td style="text-align:left">x</td>
+<td style="text-align:right">delete character</td>
+</tr>
+<tr>
+<td style="text-align:left">.</td>
+<td style="text-align:right">repeat last change</td>
+</tr>
+<tr>
+<td style="text-align:left">/</td>
+<td style="text-align:right">search forward</td>
+</tr>
+<tr>
+<td style="text-align:left">?</td>
+<td style="text-align:right">search backwards</td>
+</tr>
+<tr>
+<td style="text-align:left">,,</td>
+<td style="text-align:right">jump back</td>
+</tr>
+<tr>
+<td style="text-align:left">,.</td>
+<td style="text-align:right">go to latest change in file</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;C-w&gt;T</td>
+<td style="text-align:right">Move split into own tab</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;A-<strong>n</strong>&gt;</td>
+<td style="text-align:right">Go to tab <strong>n</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">:ls</td>
+<td style="text-align:right">List buffers</td>
+</tr>
+<tr>
+<td style="text-align:left">:b <strong>n</strong></td>
+<td style="text-align:right">Go to buffer <strong>n</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">:sp, :hs</td>
+<td style="text-align:right">Split {vertically, horizontally}</td>
+</tr>
+<tr>
+<td style="text-align:left">zz</td>
+<td style="text-align:right">center cursor on screen</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;C-d&gt;, &lt;C-u&gt;</td>
+<td style="text-align:right">Move screen {down, up} half screen</td>
+</tr>
+<tr>
+<td style="text-align:left">:<strong>n</strong>s/<strong>abc</strong>/<strong>def</strong></td>
+<td style="text-align:right">Replace <strong>n</strong> (<strong>%</strong> for all) occurences of <strong>abc</strong> with <strong>def</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">:<strong>n</strong>s/<strong>abc</strong>/<strong>def</strong>/gc</td>
+<td style="text-align:right">Same but with confirmation</td>
+</tr>
+</tbody>
+</table>
+<h2>Useful stuff</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th><div style="width:200px"><div></th>
+<th style="text-align:right"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Snippet command</td>
+<td><strong>x</strong> :-1read <strong>path</strong>&lt;CR&gt;<strong>move</strong>a</td>
+<td style="text-align:right">use command <strong>x</strong> to read file at <strong>path</strong>,<strong>move</strong> where you wanna be and enter insert mode</td>
+</tr>
+<tr>
+<td style="text-align:left">Remove buffers</td>
+<td>:bd <strong>x</strong> &lt;C-a&gt;</td>
+<td style="text-align:right">Remove all buffers that match <strong>x</strong>. E.g. :bd <strong>node_modules</strong> &lt;C-a&gt; to close all buffers open from node_modules.</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><h2>Insert mode</h2></th>
+<th style="text-align:left"><h2>removed</h2></th>
 <th style="text-align:right"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Enter insert mode { before, after } cursor</td>
-<td style="text-align:right"><s><code>i</code></s> → <code>h</code>, <code>a</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Enter insert mode at the { beginning, end } of the line</td>
-<td style="text-align:right"><s><code>I</code></s> → <code>H</code>, <code>A</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Open a new line { below, above } the current line and enter insert mode</td>
-<td style="text-align:right"><code>o</code>, <code>O</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Append at end of word and enter insert mode</td>
-<td style="text-align:right"><code>ea</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Delete { character, word } before cursor (during insert mode)</td>
-<td style="text-align:right"><code>&lt;C-h&gt;</code>, <code>&lt;C-w&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">New line (during insert mode)</td>
-<td style="text-align:right"><code>&lt;C-j&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">{ Indent, Deindet } (during insert mode)</td>
-<td style="text-align:right"><code>&lt;C-t&gt;</code>, <code>&lt;C-d&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Insert { previous, next } best guess (auto-complete) (during insert mode)</td>
-<td style="text-align:right"><code>&lt;C-p&gt;</code>, <code>&lt;C-n&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><s>Insert content of register <strong>x</strong></s> **</td>
-<td style="text-align:right"><s><code>&lt;C-r&gt;</code><strong>x</strong></s> **</td>
+<td style="text-align:left">&lt;C-f&gt;, &lt;C-b&gt;</td>
+<td style="text-align:right">Move screen {down, up} half screen</td>
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><h2>Visual mode</h2></th>
-<th style="text-align:right"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Start visual mode { normal, linewise, blockmode }</td>
-<td style="text-align:right"><code>v</code>, <code>V</code>, <code>&lt;C-v&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Move between { start or end, corners } of selection</td>
-<td style="text-align:right"><code>o</code>, <code>O</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Mark a word</td>
-<td style="text-align:right"><code>aw</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Mark between { <strong>()</strong>, <strong>{}</strong>, <strong>&lt;&gt;</strong> } + in { inner ,outer } block</td>
-<td style="text-align:right"><code>ib</code>, <code>iB</code>, <code>it</code>, <code>ab</code>, <code>aB</code>, <code>at</code></td>
-</tr>
-<tr>
-<td style="text-align:left">{ Lower, upper, switch } case for marked text</td>
-<td style="text-align:right"><code>u</code>, <code>U</code>, <code>~</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Shift marked text { left, right }</td>
-<td style="text-align:right"><code>&lt;</code>, <code>&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">{ Copy (yank), Delete (cut) } marked text</td>
-<td style="text-align:right"><code>y</code>, <code>d</code></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><h2>Layout</h2></th>
-<th style="text-align:right"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Move split into own tab</td>
-<td style="text-align:right"><code>&lt;C-w&gt;T</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Move to { previous, next } tab</td>
-<td style="text-align:right"><code>gT</code> → <code>&lt;C-j&gt;</code>, <code>gt</code> → <code>&lt;C-l&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Move to tab number <strong>n</strong></td>
-<td style="text-align:right"><strong>n</strong><code>gt</code> or <code>&lt;A-</code><strong>n</strong><code>&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Move current tab to position <strong>n</strong></td>
-<td style="text-align:right"><code>:tabm</code> <strong>n</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">Close { current tab, all tabs but current one }</td>
-<td style="text-align:right"><code>:tabc</code>, <code>:tabo</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Split window {, vertically}</td>
-<td style="text-align:right"><code>&lt;C-w&gt;s</code>, <code>&lt;C-w&gt;v</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Switch windows {, with next one }</td>
-<td style="text-align:right"><code>&lt;C-w&gt;w</code>, <code>&lt;C-w&gt;x</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Quit window</td>
-<td style="text-align:right"><code>&lt;C-w&gt;q</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Move cursor to window { left, down, up, right }</td>
-<td style="text-align:right"><s><code>&lt;C-w&gt;h</code></s>, <s><code>&lt;C-w&gt;j</code></s>, <s><code>&lt;C-w&gt;k</code></s>, <s><code>&lt;C-w&gt;l</code></s> → <code>&lt;C-w&gt;j</code>, <code>&lt;C-w&gt;k</code>, <code>&lt;C-w&gt;i</code>, <code>&lt;C-w&gt;l</code></td>
-</tr>
-<tr>
-<td style="text-align:left">{ Increase, Decrase } window size + { hor, vert }</td>
-<td style="text-align:right"><code>&lt;C-w&gt;&gt;</code>, <code>&lt;C-w&gt;&lt;</code> + <code>&lt;C-w&gt;+</code>, <code>&lt;C-w&gt;-</code></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><h2>Commands</h2></th>
-<th style="text-align:right"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">{Write (W), Quit (Q), Force (F) Q, W &amp; Q, Q all (a), F Q a, W &amp; Q a}</td>
-<td style="text-align:right"><code>:w</code>, <code>:q</code>, <code>:q!</code>, <code>:wq</code>, <code>:qa</code>, <code>:qa!</code>, <code>:wqa</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Edit in new buffer</td>
-<td style="text-align:right"><code>:e</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Go to { next, previous } buffer</td>
-<td style="text-align:right"><code>:bn</code>, <code>:bp</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Go to buffer <strong>n</strong> (number of filename)</td>
-<td style="text-align:right"><code>:b</code><strong>n</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">List buffers</td>
-<td style="text-align:right">':ls' or ':buffers'</td>
-</tr>
-<tr>
-<td style="text-align:left">Delete buffer</td>
-<td style="text-align:right"><code>:bd</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Search { forwards, backwards } <strong>abc</strong></td>
-<td style="text-align:right"><code>/</code><strong>abc</strong> or <code>&lt;C-f&gt;</code><strong>abc</strong>, <code>?</code><strong>abc</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">Repeat search in { same, opposite } direction</td>
-<td style="text-align:right"><code>n</code>, <code>N</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Replace all <strong>abc</strong> with <strong>def</strong> in buffer + confirmation</td>
-<td style="text-align:right"><code>:%s/</code><strong>abc</strong><code>/</code><strong>def</strong><code>/g</code>, <code>.../</code><strong>def</strong><code>/gc</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Open file in new buffer and split window {, vertically}</td>
-<td style="text-align:right"><code>:sp</code>, <code>:vs</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Open all buffers as { vertical windows, tabs }</td>
-<td style="text-align:right"><code>:vert</code>, <code>:tab ba</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Run command on all { tabs, windows of active tab }</td>
-<td style="text-align:right"><code>:tabdo</code>, <code>:windo</code></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><h2>Honorable mentions</h2></th>
-<th style="text-align:right"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Leave mode</td>
-<td style="text-align:right"><code>&lt;Esc&gt;</code> → <code>jj</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Indent a block with <strong>()</strong> or <strong>{}</strong> (cursor on brace)</td>
-<td style="text-align:right"><code>&gt;%</code></td>
-</tr>
-<tr>
-<td style="text-align:left">{Re-}Indent block with + { <strong>()</strong>, <strong>{}</strong>, <strong>&lt;&gt;</strong> }</td>
-<td style="text-align:right"><code>=ib</code>, <code>=iB</code>, <code>=at</code> + <code>&gt;ib</code>, <code>&gt;iB</code>, <code>&gt;at</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Paste and adjust indent in current line</td>
-<td style="text-align:right"><code>]p</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Reindent <strong>n</strong> lines</td>
-<td style="text-align:right"><strong>n</strong>==</td>
-</tr>
-<tr>
-<td style="text-align:left"><s>{ Copy, paste } into register <strong>n</strong> (x for system clipboard)</s>**</td>
-<td style="text-align:right"><code>ny</code>, <code>np</code></td>
-</tr>
-<tr>
-<td style="text-align:left">{ Record, Run } macro <strong>n</strong></td>
-<td style="text-align:right"><code>q</code><strong>n</strong>, <code>@</code><strong>n</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">Stop recording</td>
-<td style="text-align:right"><code>q</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Rerun last macro</td>
-<td style="text-align:right"><code>@@</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Go to position { where vim was exited, when last editing file, of last change }</td>
-<td style="text-align:right"><code>`0</code>, <code>`&quot;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Go to { newer, older } position in + { jump, change} list</td>
-<td style="text-align:right"><code>&lt;C-i&gt;</code>, <code>&lt;C-o&gt;</code>, <code>g,</code>, <code>g;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Jump to tag under cursor</td>
-<td style="text-align:right"><code>&lt;C-]&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Search <strong>abc</strong> using regex magic</td>
-<td style="text-align:right"><code>\v</code><strong>abc</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">Open help for word under cursor</td>
-<td style="text-align:right"><code>K</code></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><h2>Windows terminal</h2></th>
-<th style="text-align:right"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Open new tab using profile <em>n</em></td>
-<td style="text-align:right"><code>&lt;C-S-*n*&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Close tab</td>
-<td style="text-align:right"><code>&lt;C-S-w&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">{Next, Previous} tab</td>
-<td style="text-align:right"><code>&lt;C-Tab&gt;</code>, <code>&lt;C-S-Tab&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Scroll {up, down}</td>
-<td style="text-align:right"><code>&lt;C-S-Up&gt;</code>, <C-S-Down>`</td>
-</tr>
-<tr>
-<td style="text-align:left">Split {vertically, horizontally}</td>
-<td style="text-align:right"><code>&lt;C-S-+&gt;</code>, <code>&lt;C-S--&gt;</code></td>
-</tr>
-</tbody>
-</table>
-<p>* See custom commands <br>
-** Registers are set to system registers (set clipboard = unnamed)</p>
-<hr>
-<h3 id="todo">TODO:</h3>
-<ul>
-<li>Check folds</li>
-<li>Coc Hotkeys</li>
-</ul>
 
 </main>
 </body>
