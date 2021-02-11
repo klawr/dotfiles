@@ -4,7 +4,7 @@ nnoremap - <Nop>
 " let maplocalleader = "-"
 nnoremap - /
 
-nnoremap ' :find
+nnoremap ' :find 
 nnoremap <Leader><Esc> :noh<CR>
 
 " https://stackoverflow.com/questions/3878692/how-to-create-an-alias-for-a-command-in-vim
@@ -33,9 +33,6 @@ inoremap jj <Esc>
 nnoremap , `
 nnoremap ,, ``
 
-" Set mark z, clean all whitespaces, reindent whole buffer
-" Move back to z, center cursor and remove highlights on whitespaces
-nnoremap <A-F> mz:%s/\s\+$//e<CR>gg=G<CR>`zzz:noh<CR>
 " Close window
 nnoremap qq :q<CR>
 
