@@ -2,6 +2,7 @@
 call plug#begin("~/.vim/plugged")
     Plug 'morhetz/gruvbox'
     "Plug 'sheerun/vim-polyglot'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'mg979/vim-visual-multi', {'branch': 'master'},
     Plug 'tpope/vim-fugitive'

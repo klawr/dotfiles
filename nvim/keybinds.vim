@@ -7,9 +7,14 @@ nnoremap - /
 nnoremap ' :find
 nnoremap <Leader><Esc> :noh<CR>
 
-" Open and source init.vim: READONLY IN VSCODE...TEST IT YOU WILL SEE WHY.
-:nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
-:nnoremap <Leader>sv :source $MYVIMRC<cr>
+" https://stackoverflow.com/questions/3878692/how-to-create-an-alias-for-a-command-in-vim
+fun! SetupCommandAlias(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
+call SetupCommandAlias("ev","vsplit $MYVIMRC")
+call SetupCommandAlias("src","source $MYVIMRC")
 
 " Echo complete file path:
 nnoremap <Leader>p :echo expand('%:p')<CR>
@@ -38,6 +43,8 @@ nnoremap qq :q<CR>
 nnoremap # :
 nnoremap ! :!
 
+" Open file of path under cursor in new tab
+nnoremap <C-g> <C-w>gf
 " Open new empty tab
 nnoremap <A-t> :tabnew<Cr><Cr>
 " Iterate from 0 to 10 for keybinds
