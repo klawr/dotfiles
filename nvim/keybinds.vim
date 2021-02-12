@@ -43,7 +43,9 @@ nnoremap ! :!
 " Open file of path under cursor in new tab
 nnoremap <C-g> <C-w>gf
 " Open new empty tab
-nnoremap <A-t> :tabnew<Cr><Cr>
+nnoremap <A-t> :tabnew<Cr>
+nnoremap <A-b> :below vnew<Cr>
+
 " Iterate from 0 to 10 for keybinds
 let count = 1
 while count <= 10

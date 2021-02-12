@@ -1,3 +1,5 @@
+" One change in line 67: Change show doc from K to <C-k>
+
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -62,7 +64,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> <C-k> :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
