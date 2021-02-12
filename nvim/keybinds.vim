@@ -36,7 +36,6 @@ nnoremap ,, ``
 " Close window
 nnoremap qq :q<CR>
 
-" # is for 'alternate file name'. ¯\_(ツ)_/¯
 nnoremap # :
 nnoremap ! :!
 
@@ -44,7 +43,8 @@ nnoremap ! :!
 nnoremap <C-g> <C-w>gf
 " Open new empty tab
 nnoremap <A-t> :tabnew<Cr>
-nnoremap <A-b> :below vnew<Cr>
+nnoremap <A-+> :below vnew<Cr>
+nnoremap <A--> :below new<Cr>
 
 " Iterate from 0 to 10 for keybinds
 let count = 1

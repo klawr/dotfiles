@@ -8,13 +8,14 @@ let g:netrw_browse_split=0
 let g:netrw_altv=1
 let g:netrw_liststyle=1
 let g:netrw_sizestyle="h"
+let g:netrw_bufsettings = "nu"
 
 augroup netrw_mappings
     autocmd!
-    autocmd filetype netrw call NetrwMapping()
+    autocmd filetype netrw call NetrwSettings()
 augroup end
 
-function! NetrwMapping()
+function! NetrwSettings()
     noremap <buffer> i k
 endfunction
 
