@@ -1,4 +1,6 @@
 **/.vscode
 nvim/.netrwhist
-PowerShell/Modules/*
+PowerShell/Modules
+PowerShell/Help
+PowerShell/Microsoft.PowerShell_profile.ps1
 docs/pages.json

@@ -2,35 +2,7 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-function global:prompt {
-    $Drive = $pwd.Drive.Name
-    $Pwds = $pwd -split "\\" | Where-Object { -Not [String]::IsNullOrEmpty($_) }
-    $PwdPath = if ($Pwds.Count -gt 3) {
-        $ParentFolder = Split-Path -Path (Split-Path -Path $pwd -Parent) -Leaf
-        $CurrentFolder = Split-Path -Path $pwd -Leaf
-        "..\$ParentFolder\$CurrentFolder"
-    }
-    elseif ($Pwds.Count -eq 3) {
-        $ParentFolder = Split-Path -Path (Split-Path -Path $pwd -Parent) -Leaf
-        $CurrentFolder = Split-Path -Path $pwd -Leaf
-        "$ParentFolder\$CurrentFolder"
-    }
-    elseif ($Pwds.Count -eq 2) {
-        Split-Path -Path $pwd -Leaf
-    }
-    else { "" }
- 
-    $Path = "$Drive`:\$PwdPath"
-    $IsAdmin = (New-Object Security.Principal.WindowsPrincipal ([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
-    if ($IsAdmin) {          
-        Write-Host -Object $Path -NoNewline -ForegroundColor DarkRed
-    }
-    else {
-        Write-Host -Object $Path -NoNewline -ForegroundColor DarkGray
-    }
- 
-    return "> "
-}
+Set-Theme egoista
 
 $paths = @(
     "$env:ProgramData\Miniconda3\Scripts\conda.exe"
@@ -48,10 +20,10 @@ foreach ($path in $paths) {
     }
 }
 
-Function .. { cd .. }
-Function ... { cd ../.. }
-Function .... { cd ../../.. }
-Function ..... { cd ../../../.. }
+Function .. { Set-Location .. }
+Function ... { Set-Location ../.. }
+Function .... { Set-Location ../../.. }
+Function ..... { Set-Location ../../../.. }
 
 Function ddg {
     $arg = $args | Join-String -Separator "+"
@@ -87,35 +59,22 @@ Function DEV {
     }
 
     Set-Location "$path"
-
-    if (Test-Path "$path\.git") {
-        LOAD_GIT_MODULE
-    }
 }
 
 Set-Variable PROFILEPATH $HOME\OneDrive\Documents\PowerShell
 Function PROFILE {
     nvim $PROFILEPATH\profile.ps1
-    # code -n $PROFILEPATH -g $PROFILEPATH\profile.ps1
 }
 
-Set-Variable NVIMPROFILE $HOME\AppData\Local\nvim\init.vim
 Function nvimconfig {
-    nvim $NVIMPROFILE
+    nvim $HOME\AppData\Local\nvim\init.vim
 }
 
 Function vi {
     nvim $args
 }
-
-Function LOAD_GIT_MODULE {
-    Write-Progress "Loading posh-git"
-    Import-Module "$PROFILEPATH\Modules\posh-git\0.7.3\posh-git.psd1"
-}
-New-Alias -Name lgit -Value LOAD_GIT_MODULE
-
-
-# This command is used for the deepmech project, where certain webpack stuff is not working...
+            
+# # This command is used for the deepmech project, where certain webpack stuff is not working...
 Set-Variable -Name DEVPATH -Value $HOME\devel\deepmech\gh-pages 
 Function LAZY {
     Get-ChildItem -Path $DEVPATH\dist\dist -Recurse -File | Move-Item -Destination $DEVPATH\dist
