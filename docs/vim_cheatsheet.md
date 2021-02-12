@@ -30,17 +30,18 @@ Verbs describe what shall be done. They need a **noun** to work.
 | y              |                      yank (copy) |
 | gc             |    comment (from vim-commentary) |
 
-| <h2>nouns</h2> |                               |
-| :------------- | ----------------------------: |
-| d              |                        delete |
-| w              | word (forward to end of word) |
-| "              |                             " |
-| t              |                   tags (html) |
-| b              |                      brackets |
-| p              |                     paragraph |
-| \> , <         |            {indent, deindent} |
-| as             | as sentence (untested now...) |
-| m**x**         |                set mark **x** |
+| <h2>nouns</h2> |                                  |
+| :------------- | -------------------------------: |
+| d              |                           delete |
+| w              |                       small word |
+| W              | Big word (including punctuation) |
+| "              |                                " |
+| t              |                      tags (html) |
+| b              |                         brackets |
+| p              |                        paragraph |
+| \> , <         |               {indent, deindent} |
+| as             |    as sentence (untested now...) |
+| m**x**         |                   set mark **x** |
 
 Specifiers without a verb are used for movement.
 
@@ -111,3 +112,4 @@ zz | center cursor on screen
 | <h2>removed</h2> |                                    |
 | :--------------- | ---------------------------------: |
 | \<C-f\>, \<C-b\> | Move screen {down, up} half screen |
+
