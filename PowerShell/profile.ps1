@@ -25,6 +25,9 @@ Function ... { Set-Location ../.. }
 Function .... { Set-Location ../../.. }
 Function ..... { Set-Location ../../../.. }
 
+Function gs { git status }
+Function gd { git diff $args }
+
 Function ddg {
     $arg = $args | Join-String -Separator "+"
     msedge "https://duckduckgo.com/?q=$arg"

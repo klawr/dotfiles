@@ -1,5 +1,3 @@
-" One change in line 67: Change show doc from K to <C-k>
-
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -42,7 +40,8 @@ endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+  " inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <silent><expr> <c-i> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
@@ -101,6 +100,7 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <c-a>  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
