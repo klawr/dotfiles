@@ -1,4 +1,4 @@
-set nocompatible
+" set nocompatible
 
 syntax enable
 colorscheme gruvbox
@@ -28,13 +28,13 @@ set spell       " Spellchecking
 
 set autoindent
 set shiftwidth=4
-set smartindent
 set smarttab
 set softtabstop=4
 set expandtab
 set linebreak
 set showtabline=1 " 0 Always show tabline
-set path+=**
-set wildignore+=**/node_modules/**
+set path+=.,**
+
+set wildignore+=*/node_modules/*
 
 filetype plugin on
