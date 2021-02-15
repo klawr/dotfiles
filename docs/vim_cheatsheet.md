@@ -32,7 +32,6 @@ Verbs describe what shall be done. They need a **noun** to work.
 
 | <h2>nouns</h2> |                                  |
 | :------------- | -------------------------------: |
-| d              |                           delete |
 | w              |                       small word |
 | W              | Big word (including punctuation) |
 | "              |                                " |
@@ -112,4 +111,3 @@ zz | center cursor on screen
 | <h2>removed</h2> |                                    |
 | :--------------- | ---------------------------------: |
 | \<C-f\>, \<C-b\> | Move screen {down, up} half screen |
-
