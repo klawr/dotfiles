@@ -17,6 +17,7 @@ augroup end
 
 function! NetrwSettings()
     noremap <buffer> i k
+    noremap <Cr> <C-g>
 endfunction
 
 " other settings:
@@ -35,6 +36,6 @@ set linebreak
 set showtabline=1 " 0 Always show tabline
 set path+=.,**
 
-set wildignore+=*/node_modules/*
+set wildignore+=*/node_modules/*,*/vcpkg/*,*/data/*
 
 filetype plugin on
