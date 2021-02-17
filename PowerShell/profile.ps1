@@ -20,6 +20,10 @@ foreach ($path in $paths) {
     }
 }
 
+Function lsd {
+    ls | Select-Object -ExpandProperty Name | Join-String -Separator "`t"
+}
+
 Function .. { Set-Location .. }
 Function ... { Set-Location ../.. }
 Function .... { Set-Location ../../.. }
