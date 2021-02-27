@@ -20,6 +20,8 @@ foreach ($path in $paths) {
     }
 }
 
+Set-Alias c clear
+
 Function lsd {
     ls | Select-Object -ExpandProperty Name | Join-String -Separator "`t"
 }

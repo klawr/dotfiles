@@ -13,7 +13,7 @@ fun! SetupCommandAlias(from, to)
         \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
         \ .'? ("'.a:to.'") : ("'.a:from.'"))'
 endfun
-call SetupCommandAlias("ev","vsplit $MYVIMRC")
+call SetupCommandAlias("ev","tabnew $MYVIMRC")
 call SetupCommandAlias("src","source $MYVIMRC")
 
 " Echo complete file path:
