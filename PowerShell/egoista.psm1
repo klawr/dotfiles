@@ -18,7 +18,7 @@ function Write-Theme {
         $prompt += Write-Prompt -Object "(env: $(Get-VirtualEnvName))"
     }
 
-    $time = Get-Date -Format HH:MM:ss
+    $time = Get-Date -Format HH:mm:ss
     # $prompt += Set-CursorForRightBlockWrite -textLength $time.Length
     $prompt += Write-Prompt " $time" -ForegroundColor LightBlue
 

@@ -22,6 +22,13 @@ foreach ($path in $paths) {
 
 Set-Alias c clear
 
+Function take {
+    if (-not (Test-Path($args[0]))) {
+        mkdir $args[0] > $null
+    }
+    cd $args[0]
+}
+
 Function lsd {
     ls | Select-Object -ExpandProperty Name | Join-String -Separator "`t"
 }
