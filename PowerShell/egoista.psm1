@@ -11,16 +11,16 @@ function Write-Theme {
     $status = Get-VCSStatus
     if ($status) {
         $themeInfo = Get-VcsInfo -status ($status)
-        $prompt += Write-Prompt -Object "<$($themeInfo.VcInfo)>" -ForegroundColor $themeInfo.BackgroundColor
+        $prompt += Write-Prompt -Object "<$($themeInfo.VcInfo)> " -ForegroundColor $themeInfo.BackgroundColor
     }
 
     if (Test-VirtualEnv) {
-        $prompt += Write-Prompt -Object "(env: $(Get-VirtualEnvName))"
+        $prompt += Write-Prompt -Object "(env: $(Get-VirtualEnvName)) "
     }
 
     $time = Get-Date -Format HH:mm:ss
     # $prompt += Set-CursorForRightBlockWrite -textLength $time.Length
-    $prompt += Write-Prompt " $time" -ForegroundColor LightBlue
+    $prompt += Write-Prompt "$time " -ForegroundColor LightBlue
 
     $prompt += Set-Newline
     $prompt += "λ "
