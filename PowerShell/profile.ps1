@@ -89,27 +89,6 @@ Function nvimconfig {
 Function vi {
     nvim $args
 }
-            
-# # This command is used for the deepmech project, where certain webpack stuff is not working...
-Set-Variable -Name DEVPATH -Value $HOME\devel\deepmech\gh-pages 
-Function LAZY {
-    Get-ChildItem -Path $DEVPATH\dist\dist -Recurse -File | Move-Item -Destination $DEVPATH\dist
-    Remove-Item $DEVPATH\dist\dist
-}
-# Figured I repeat this too often in said project:
-Function BUILD {
-    if ((Get-Location).path -eq $DEVPATH) {
-        yarn run build
-        LAZY
-        git add -A
-        git commit -m "Build bundle"
-        git push
-        Write-Host "Finished 😊" -ForegroundColor Green
-    } else {
-        Write-Host "You are not in " $DEVPATH -ForegroundColor Red
-        Write-Host "Type DEV to get there..." -ForegroundColor Red
-    }
-}
 
 #region conda initialize
 # !! Contents within this block are managed by 'conda init' !!
