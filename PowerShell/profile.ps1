@@ -90,6 +90,19 @@ Function vi {
     nvim $args
 }
 
+Function gh {
+    $a = git remote -v | Select -First 1
+    if (!$a) {
+        return
+    }
+    $b = $a.indexOf('@')
+    $c = $a.indexOf(' (fetch)')
+    $d = $a.Substring($b+1, $c-$b)
+    $e = $d.Replace(":", "/")
+    msedge "https://$e"
+
+}
+
 #region conda initialize
 # !! Contents within this block are managed by 'conda init' !!
 (& "C:\ProgramData\Miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
