@@ -3,6 +3,7 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-Theme egoista
+Set-Alias browser msedge
 
 $paths = @(
     "$env:ProgramData\Miniconda3\Scripts\conda.exe"
@@ -10,7 +11,6 @@ $paths = @(
     "$env:OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe"
     "$env:LocalAppData\Microsoft\Edge SxS\Application\msedge.exe"
 )
-
 foreach ($path in $paths) {
     $leaf = [System.IO.Path]::GetFileNameWithoutExtension($path)
     if (Test-Path $path) {
@@ -43,7 +43,7 @@ Function gd { git diff $args }
 
 Function ddg {
     $arg = $args | Join-String -Separator "+"
-    msedge "https://duckduckgo.com/?q=$arg"
+    browser "https://duckduckgo.com/?q=$arg"
 }
 
 Function CLEANTEMP {
@@ -99,8 +99,7 @@ Function gh {
     $c = $a.indexOf(' (fetch)')
     $d = $a.Substring($b+1, $c-$b)
     $e = $d.Replace(":", "/")
-    msedge "https://$e"
-
+    browser "https://$e"
 }
 
 #region conda initialize
