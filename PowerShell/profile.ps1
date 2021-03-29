@@ -46,10 +46,6 @@ Function ddg {
     browser "https://duckduckgo.com/?q=$arg"
 }
 
-Function CLEANTEMP {
-    Remove-Item -Recurse -Force -ErrorAction Ignore $env:TEMP
-}
-
 Function DEV {
     $path = "$HOME\devel"
 
@@ -101,9 +97,4 @@ Function gh {
     $e = $d.Replace(":", "/")
     browser "https://$e"
 }
-
-#region conda initialize
-# !! Contents within this block are managed by 'conda init' !!
-(& "C:\ProgramData\Miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
-#endregion
 
