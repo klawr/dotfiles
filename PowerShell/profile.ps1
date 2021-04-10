@@ -20,8 +20,6 @@ foreach ($path in $paths) {
     }
 }
 
-Set-Alias c clear
-
 Function take {
     if (-not (Test-Path($args[0]))) {
         mkdir $args[0] > $null
@@ -97,4 +95,10 @@ Function gh {
     $e = $d.Replace(":", "/")
     browser "https://$e"
 }
+
+#region conda initialize
+# !! Contents within this block are managed by 'conda init' !!
+(& "C:\ProgramData\Miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
+#endregion
+
 
