@@ -3,7 +3,7 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-Theme egoista
-Set-Alias browser msedge
+Set-Alias browser firefox
 
 $paths = @(
     "$env:ProgramData\Miniconda3\Scripts\conda.exe"
