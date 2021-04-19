@@ -3,13 +3,14 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-Theme egoista
-Set-Alias browser firefox
+Set-Alias browser vivaldi
 
 $paths = @(
     "$env:ProgramData\Miniconda3\Scripts\conda.exe"
     "$env:ProgramFiles\Mozilla Firefox\firefox.exe"
     "$env:OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe"
     "$env:LocalAppData\Microsoft\Edge SxS\Application\msedge.exe"
+    "$env:LocalAppData\Vivaldi\Application\vivaldi.exe"
 )
 foreach ($path in $paths) {
     $leaf = [System.IO.Path]::GetFileNameWithoutExtension($path)
