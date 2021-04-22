@@ -97,6 +97,30 @@ Function gh {
     browser "https://$e"
 }
 
+Function lazy {
+    $a = "C:\Users\me\devel\deepmech\master\src\react-native"
+    $b = "Blue"
+    Write-Host Changing directory to $a -ForegroundColor $b
+    cd $a
+    Write-Host Closing all java processes -ForegroundColor $b
+    Stop-Process -Name java
+    Write-Host Remove node_modules -ForegroundColor $b
+    rm -Force -Recurse node_modules
+    Write-Host yarn install -ForegroundColor $b
+    yarn install
+    Write-Host Removing ~\.gradle\caches -ForegroundColor $b
+    rm -Force -Recurse ~\.gradle\caches
+    Write-Host Changing directory to .\android -ForegroundColor $b
+    cd android
+    Write-Host Issuing gradlew clean -ForegroundColor $b
+    .\gradlew clean
+}
+
+Function cdp {
+     cd "C:\Users\me\devel\deepmech\master\src\react-native"
+}
+    
+
 #region conda initialize
 # !! Contents within this block are managed by 'conda init' !!
 (& "C:\ProgramData\Miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
