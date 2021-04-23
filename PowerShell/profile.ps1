@@ -119,11 +119,28 @@ Function lazy {
 Function cdp {
      cd "C:\Users\me\devel\deepmech\master\src\react-native"
 }
-    
+ 
+# I am sorry.
+Function trottel {
+    $command, $rest = $args
+    if ($command -eq "hinzufügen") {
+        git add $rest
+    } elseif ($command -eq "bestätigen") {
+        git commit $rest
+    } elseif ($command -eq "unterscheiden") {
+        git diff $rest
+    } elseif ($command -eq "drücken") {
+        git push $rest
+    } elseif ($command -eq "ziehen") {
+        git pull $rest
+    } else {
+        git $command $rest
+    }
+}
+
 
 #region conda initialize
 # !! Contents within this block are managed by 'conda init' !!
 (& "C:\ProgramData\Miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
 #endregion
-
 
