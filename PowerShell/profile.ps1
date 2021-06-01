@@ -3,14 +3,13 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-Theme egoista
-Set-Alias browser vivaldi
+Set-Alias browser firefox
+Set-Alias editor code
 
 $paths = @(
-    "$env:ProgramData\Miniconda3\Scripts\conda.exe"
     "$env:ProgramFiles\Mozilla Firefox\firefox.exe"
-    "$env:OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe"
-    "$env:LocalAppData\Microsoft\Edge SxS\Application\msedge.exe"
-    "$env:LocalAppData\Vivaldi\Application\vivaldi.exe"
+    "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe"
+    # "$env:OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe"
 )
 foreach ($path in $paths) {
     $leaf = [System.IO.Path]::GetFileNameWithoutExtension($path)
@@ -46,7 +45,7 @@ Function ddg {
 }
 
 Function DEV {
-    $path = "$HOME\devel"
+    $path = "D:\devel"
 
     foreach ($arg in $args) {
         $result = @(Get-ChildItem($path) -Directory).BaseName -match $arg
@@ -72,13 +71,13 @@ Function DEV {
     Set-Location "$path"
 }
 
-Set-Variable PROFILEPATH $HOME\OneDrive\Documents\PowerShell
+Set-Variable PROFILEPATH $HOME\Documents\PowerShell
 Function PROFILE {
-    nvim $PROFILEPATH\profile.ps1
+    editor $PROFILEPATH\profile.ps1
 }
 
 Function nvimconfig {
-    nvim $HOME\AppData\Local\nvim\init.vim
+    editor $HOME\AppData\Local\nvim\init.vim
 }
 
 Function vi {
@@ -141,6 +140,6 @@ Function trottel {
 
 #region conda initialize
 # !! Contents within this block are managed by 'conda init' !!
-(& "C:\ProgramData\Miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
+(& "C:\Users\me\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
 #endregion
 

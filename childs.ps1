@@ -1,7 +1,7 @@
 if ($IsWindows) {
-    $source = "$env:UserProfile\devel\dotfiles"
+    $source = "D:\devel\dotfiles"
     $childs = @(
-        "$env:LOCALAPPDATA\nvim"
+        # "$env:LOCALAPPDATA\nvim"
         "$env:OneDrive\Documents\PowerShell"
     )
 }
@@ -11,6 +11,7 @@ elseif ($IsLinux -eq "True") {
 
 if ($args[0] -eq "get") {
     foreach ($child in $childs) {
+        Write-Host $child $source
         Copy-Item -Recurse -Force $child $source
     }
 }
