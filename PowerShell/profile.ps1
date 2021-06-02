@@ -49,9 +49,14 @@ Function DEV {
 
     foreach ($arg in $args) {
         $result = @(Get-ChildItem($path) -Directory).BaseName -match $arg
+        
         if ($result.length -eq 0 -or $result -eq $False) {
             Write-Host No match found -ForegroundColor Red
             Write-Host (Get-ChildItem($path) -Directory).BaseName -Separator `n -ForegroundColor Yellow
+        }
+        # If only 1 element is returned, $result is True
+        if ($result -eq $True) {
+            $path = "$path\$arg"
         }
         elseif ($result.Length -gt 1) {
             Write-Host Ambiguity -ForegroundColor Red
