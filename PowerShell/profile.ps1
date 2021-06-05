@@ -45,7 +45,9 @@ Function ddg {
 }
 
 Function DEV {
-    $path = "D:\devel"
+    $optionA = "D:\devel"
+    $optionB = "C:\Users\me\devel"
+    $path = if (Test-Path $optionA)  { $optionA } else { $optionB }
 
     foreach ($arg in $args) {
         $result = @(Get-ChildItem($path) -Directory).BaseName -match $arg
