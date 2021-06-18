@@ -4,3 +4,5 @@ PowerShell/Modules
 PowerShell/Help
 PowerShell/Microsoft.PowerShell_profile.ps1
 docs/pages.json
+**/config.json
+__pycache__
