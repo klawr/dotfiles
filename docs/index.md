@@ -25,7 +25,14 @@ Here is my init.vim. The respective cheatsheet can be found [here](./vim_cheatsh
 ## [PowerShell](https://github.com/klawr/dotfiles/tree/master/PowerShell)
 The complete PowerShell directory is saved here. This directory usually resides in `$env:OneDrive/Documents` and includes my `profile.ps1`
 
-## [childs.ps1](https://github.com/klawr/dotfiles/tree/master/childs.ps1)
+## [Scripts](https://github.com/klawr/dotfiles/tree/master)
+Contains scripts. Little helpers and such:
+
+### [childs.ps1](https://github.com/klawr/dotfiles/tree/master/childs.ps1)
 This script should allow to instantly `get` and `push` my dotfiles where I want them.
 Powershell is obviously necessary. <br>
 Just call `./childs.ps1 get` or `./childs.ps1 push` and live with the consequences.
+
+### [readPDF.py](https://github.com/klawr/dotfiles/tree/master/readPDF.py)
+Script to search for keywords in PDFs.
+
