@@ -26,7 +26,7 @@ Here is my init.vim. The respective cheatsheet can be found [here](./vim_cheatsh
 The complete PowerShell directory is saved here. This directory usually resides in `$env:OneDrive/Documents` and includes my `profile.ps1`
 
 ## [Scripts](https://github.com/klawr/dotfiles/tree/master)
-Contains scripts. Little helpers and such:
+Contains scripts.
 
 ### [childs.ps1](https://github.com/klawr/dotfiles/tree/master/childs.ps1)
 This script should allow to instantly `get` and `push` my dotfiles where I want them.
