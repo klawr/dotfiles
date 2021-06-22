@@ -154,13 +154,17 @@ Function dot {
         dev dotfiles Scripts
         $leaf = (Split-Path @(Get-ChildItem(".")) -leaf)
         $result =  $leaf -match $script
-        
+        # Write-Host $result   
         if ($result.Length -eq 1) {
-            switch ((Get-Item $leaf).Extension)
+            switch ((Get-Item $result).Extension)
             {
-                ".py" {
+                .py {
                     conda activate dotfiles
                     python $result $arguments
+                    conda deactivate
+                }
+                ".bat" {
+                    pwsh.exe $result
                 }
             }
         }
@@ -171,7 +175,6 @@ Function dot {
     }
     finally
     {
-        conda deactivate
         popd
     }
 } 
