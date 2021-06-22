@@ -163,8 +163,11 @@ Function dot {
                     python $result $arguments
                     conda deactivate
                 }
-                ".bat" {
-                    pwsh.exe $result
+                .ps1 {
+                    pwsh.exe $result $arguments
+                }
+                .bat {
+                    pwsh.exe $result $arguments
                 }
             }
         }
