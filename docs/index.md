@@ -36,3 +36,6 @@ Just call `./childs.ps1 get` or `./childs.ps1 push` and live with the consequenc
 ### [readPDF.py](https://github.com/klawr/dotfiles/tree/master/readPDF.py)
 Script to search for keywords in PDFs.
 
+### [ETH-ethermine.bat]
+Script to mine Ethereum into the *correct* wallet.
+
