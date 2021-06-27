@@ -49,12 +49,10 @@ def gather_files(dir_path, ext):
 
     return files
 
-
-# if (len(files) == 0):
-# sys.exit()
-
 pdfs = gather_files(dir_path, ".pdf")
 
+if (len(pdfs) == 0):
+    sys.exit()
 
 def get_substrings():
     substrings = []
