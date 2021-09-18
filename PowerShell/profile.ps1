@@ -4,12 +4,12 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-Theme egoista
 Set-Alias browser firefox
-Set-Alias editor code
+Set-Alias editor nvim
 
 $paths = @(
     "$env:ProgramFiles\Mozilla Firefox\firefox.exe"
     "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe"
-    # "$env:OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe"
+    "$env:OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe"
 )
 foreach ($path in $paths) {
     $leaf = [System.IO.Path]::GetFileNameWithoutExtension($path)
@@ -79,7 +79,7 @@ Function DEV {
     Set-Location "$path"
 }
 
-Set-Variable PROFILEPATH $HOME\Documents\PowerShell
+Set-Variable PROFILEPATH $env:OneDrive\Documents\PowerShell
 Function PROFILE {
     editor $PROFILEPATH\profile.ps1
 }
