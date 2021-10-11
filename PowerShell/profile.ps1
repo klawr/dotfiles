@@ -4,12 +4,12 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-Theme egoista
 Set-Alias browser firefox
-Set-Alias editor nvim
+Set-Alias editor code
 
 $paths = @(
     "$env:ProgramFiles\Mozilla Firefox\firefox.exe"
-    "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe"
-    "$env:OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe"
+    # "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe"
+    # "$env:OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe"
 )
 foreach ($path in $paths) {
     $leaf = [System.IO.Path]::GetFileNameWithoutExtension($path)
