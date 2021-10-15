@@ -126,10 +126,6 @@ Function lazy {
     Write-Host Issuing gradlew clean -ForegroundColor $b
     .\gradlew clean
 }
-
-Function cdp {
-     cd "C:\Users\me\devel\deepmech\master\src\react-native"
-}
  
 # I am sorry.
 Function trottel {
