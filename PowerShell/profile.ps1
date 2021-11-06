@@ -107,25 +107,6 @@ Function gh {
     $e = $d.Replace(":", "/")
     browser "https://$e"
 }
-
-Function lazy {
-    $a = "C:\Users\me\devel\deepmech\master\src\react-native"
-    $b = "Blue"
-    Write-Host Changing directory to $a -ForegroundColor $b
-    cd $a
-    Write-Host Closing all java processes -ForegroundColor $b
-    Stop-Process -Name java
-    Write-Host Remove node_modules -ForegroundColor $b
-    rm -Force -Recurse node_modules
-    Write-Host yarn install -ForegroundColor $b
-    yarn install
-    Write-Host Removing ~\.gradle\caches -ForegroundColor $b
-    rm -Force -Recurse ~\.gradle\caches
-    Write-Host Changing directory to .\android -ForegroundColor $b
-    cd android
-    Write-Host Issuing gradlew clean -ForegroundColor $b
-    .\gradlew clean
-}
  
 # I am sorry.
 Function trottel {
