@@ -161,7 +161,13 @@ Function dot {
     {
         popd
     }
-} 
+}
+
+Function esp {
+    dev esp esp-idf
+    ./export.ps1
+    cd -
+}
 
 
 #region conda initialize
