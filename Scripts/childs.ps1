@@ -29,6 +29,6 @@ elseif ($args[0] -eq "push") {
     }
 }
 else {
-    Write-Warning "arguments are get and push"
+    Write-Warning "invalid arguments. valid are: get, push"
 }
 
