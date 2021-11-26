@@ -27,6 +27,8 @@ The complete PowerShell directory is saved here. This directory usually resides 
 
 ## [Scripts](https://github.com/klawr/dotfiles/tree/master/Scripts)
 Contains scripts.
+These scripts can be called by using "dot fuzzyname". 
+See `pwsh` profile for more information.
 
 ### [childs.ps1](https://github.com/klawr/dotfiles/tree/master/childs.ps1)
 This script should allow to instantly `get` and `push` my dotfiles where I want them.
