@@ -156,6 +156,9 @@ Function dot {
             Write-Host Ambiguity -ForegroundColor Red
             Write-Host $result -ForegroundColor Yellow -Separator `n
         }
+        else {
+            Write-Host "No match for $script" -ForegroundColor Red
+        }
     }
     finally
     {
