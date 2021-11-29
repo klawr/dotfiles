@@ -44,10 +44,6 @@ Function ddg {
     browser "https://duckduckgo.com/?q=$arg"
 }
 
-Function octave {
-    octave-cli -q $args
-}
-
 Function DEV {
     $optionA = "D:\devel"
     $optionB = "C:\Users\me\devel"
