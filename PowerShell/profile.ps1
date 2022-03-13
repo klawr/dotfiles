@@ -44,10 +44,6 @@ Function ddg {
     browser "https://duckduckgo.com/?q=$arg"
 }
 
-Function octave {
-    octave-cli -q $args
-}
-
 Function DEV {
     $optionA = "D:\devel"
     $optionB = "C:\Users\me\devel"
@@ -157,6 +153,9 @@ Function dot {
         elseif ($result.Length -gt 1) {
             Write-Host Ambiguity -ForegroundColor Red
             Write-Host $result -ForegroundColor Yellow -Separator `n
+        }
+        else {
+            Write-Host "No match for $script" -ForegroundColor Red
         }
     }
     finally
