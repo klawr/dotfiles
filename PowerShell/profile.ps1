@@ -4,12 +4,12 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-Theme egoista
 Set-Alias browser firefox
-Set-Alias editor code
+Set-Alias editor nvim
 
 $paths = @(
     "$env:ProgramFiles\Mozilla Firefox\firefox.exe"
     # "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe"
-    # "$env:OneDrive\Documents\nvim-win64\Neovim\bin\nvim.exe"
+    "$env:OneDrive\Documents\Neovim\bin\nvim.exe"
 )
 foreach ($path in $paths) {
     $leaf = [System.IO.Path]::GetFileNameWithoutExtension($path)
@@ -89,7 +89,9 @@ Function PROFILE {
 }
 
 Function nvimconfig {
-    editor $HOME\AppData\Local\nvim\init.vim
+    cd $HOME\AppData\Local\nvim
+    nvim .\init.lua
+    # editor $HOME\AppData\Local\nvim\init.lua
 }
 
 Function vi {
@@ -168,7 +170,6 @@ Function esp {
     ./export.ps1
     cd -
 }
-
 
 #region conda initialize
 # !! Contents within this block are managed by 'conda init' !!
