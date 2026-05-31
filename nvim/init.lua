@@ -1,9 +1,2 @@
-require('plugins')
-require('settings')
-require('lsp')
-require('keybinds')
-require('alias')
-require('pok3r')
+require("config")
 
--- Load Plugins
-require('lualine').setup()
