@@ -1,0 +1,11 @@
+[font]
+size = 16.0
+
+[font.normal]
+style="Regular"
+family = "FiraCode Nerd Font Mono"
+
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/papercolor_dark.toml"
+]

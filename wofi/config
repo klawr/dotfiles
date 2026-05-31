@@ -1,0 +1,13 @@
+show=drun,run
+show_all=false
+layer=top
+location=0
+allow_images=true
+image_size=22
+gtk_dark=true
+term=alacritty
+key_expand=Tab
+run-always_parse_args=true
+normal_window=false
+insensitive=true
+prompt=Search

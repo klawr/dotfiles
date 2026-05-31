@@ -1,0 +1,35 @@
+[modules]
+left =   [ ["Workspaces", "Tray"] ]
+center = [ ["WindowTitle"] ]
+right =  [ ["MediaPlayer", "SystemInfo"], ["Clock", "Privacy", "Settings"] ]
+
+[workspaces]
+visibility_mode = "MonitorSpecific"
+enable_workspace_filling = true
+max_workspaces = 12
+
+[appearance]
+scale_factor=1.25
+opacity=0
+
+success_color = "#5faf00"
+text_color = "#d0d0d0"
+
+workspace_colors = [ "#5fafd7", "#af87d7", "#ffaf00" ]
+
+[appearance.primary_color]
+base = "#5fafd7"
+text = "#1c1c1c"
+
+[appearance.danger_color]
+base = "#af005f"
+weak = "#d7af5f"
+
+[appearance.background_color]
+base = "#1c1c1c"
+weak = "#2a2a2a"
+strong = "#3a3a3a"
+
+[appearance.secondary_color]
+base = "#585858"
+strong = "#808080"

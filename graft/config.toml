@@ -1,0 +1,36 @@
+[[inject]]
+name = "nvim"
+binary = "/usr/local/bin/nvim"
+config = "~/.config/nvim"
+target_binary = "/usr/local/bin/nvim"
+target_config = "~/.config/nvim"
+skip_if_exists = false
+
+[[inject]]
+name = "nvim-runtime"
+config = "/usr/local/share/nvim/runtime"
+target_config = "/usr/local/share/nvim/runtime"
+
+# Ship the installed plugins (lazy.nvim tree) at your exact host versions so the
+# container doesn't re-clone them at HEAD and drift into incompatible versions.
+[[inject]]
+name = "nvim-plugins"
+config = "~/.local/share/nvim/lazy"
+target_config = "~/.local/share/nvim/lazy"
+
+[[inject]]
+name          = "github-copilot"
+config        = "~/.config/github-copilot"
+target_config = "~/.config/github-copilot"
+
+[[inject]]
+name          = "claude"
+binary        = "~/.local/bin/claude"
+target_binary = "/usr/local/bin/claude"
+config        = "~/.claude"
+target_config = "~/.claude"
+skip_if_exists = true
+copy_deps     = false
+
+[session]
+shell = "/bin/bash"
