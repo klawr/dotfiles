@@ -7,5 +7,5 @@ family = "FiraCode Nerd Font Mono"
 
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/papercolor_dark.toml"
+    "/home/me/.config/alacritty/themes/themes/papercolor_light.toml"
 ]

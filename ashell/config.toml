@@ -12,24 +12,24 @@ max_workspaces = 12
 scale_factor=1.25
 opacity=0
 
-success_color = "#5faf00"
-text_color = "#d0d0d0"
+success_color = "#a6e3a1"
+text_color = "#333333"
 
-workspace_colors = [ "#5fafd7", "#af87d7", "#ffaf00" ]
+workspace_colors = [ "#07378B", "#b4befe", "#cba6f7" ]
 
 [appearance.primary_color]
-base = "#5fafd7"
-text = "#1c1c1c"
+base = "#fab387"
+text = "#1e1e2e"
 
 [appearance.danger_color]
-base = "#af005f"
-weak = "#d7af5f"
+base = "#f38ba8"
+weak = "#f9e2af"
 
 [appearance.background_color]
-base = "#1c1c1c"
-weak = "#2a2a2a"
-strong = "#3a3a3a"
+base = "#aaaaaa"
+weak = "#eeeeee"
+strong = "#45475a"
 
 [appearance.secondary_color]
-base = "#585858"
-strong = "#808080"
+base = "#11111b"
+strong = "#1b1b25"

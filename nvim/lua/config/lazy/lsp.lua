@@ -26,7 +26,7 @@ return {
         })
 
         vim.lsp.config("svelte", {
-            cmd = { "~/.cargo/bin/lspdock", "--stdio" },
+            cmd = { "/home/me/.cargo/bin/lspdock", "--stdio" },
         })
     end
 }
